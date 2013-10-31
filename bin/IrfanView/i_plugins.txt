@@ -1,0 +1,265 @@
+-----------------------------------------------------------------------------
+File  : 'Plugins.txt' - Information for IrfanView PlugIns
+Author: Irfan Skiljan
+E-Mail: irfanview@gmx.net
+WWW   : http://www.irfanview.com
+-----------------------------------------------------------------------------
+
+!*! Please use always the current IrfanView and PlugIn version !*!
+
+
+- How to install IrfanView PlugIns?
+
+  1) Visit IrfanView's homepage: http://www.irfanview.com
+  2) Go to "Download->PlugIns"
+  3) Download PlugIns
+  4) Click on the PlugIn file
+  5) PlugIns will be installed into IrfanView "PlugIns" directory
+
+
+Download:
+
+You can download all PlugIns from the Internet:
+   http://www.irfanview.com/plugins.htm
+   http://www.irfanview.net/plugins.htm
+
+-----------------------------------------------------------------------------
+
+Available PlugIns:
+
+
+* 1. 8BF_FILTERS.DLL - This PlugIn allows IrfanView to load Adobe Photoshop 8BF filters.
+                       Note: some older/special 8BFs may require additional system DLLs.
+                       You can download these DLLs here: http://irfanview.tuwien.ac.at/plugins/8bf_tools.zip
+                       Copy/unzip these DLLs into your Windows->System or System32 folder.
+
+* 2. ALTALUX.DLL - This PlugIn allows IrfanView to use AltaLux image effect.
+                   Thanks to Stefano Tommesani!
+
+* 3. ANSI2UNICODE.DLL - This PlugIn allows IrfanView to read filenames with Unicode characters.
+                        Thanks to Christophe Paris!
+
+* 4. AWD.DLL - This PlugIn allows IrfanView to read Artweaver files.
+               Thanks to Boris Eyrich.
+
+* 5. BABACAD4IMAGE.DLL - This PlugIn allows IrfanView to read DXF and DWG CAD files.
+                         Thanks to BabaCAD Software guys: http://www.babacad.com
+
+* 6. B3D.DLL - This PlugIn allows IrfanView to read BodyPaint 3D files.
+
+* 7. BURNING.DLL - This PlugIn allows IrfanView to burn slideshow to a CD/DVD/BD.
+                   Windows XP SP3 or later required.
+
+* 8. BURNINGOLD.DLL - This PlugIn allows IrfanView to burn slideshow to a CD.
+                      Windows XP or later required, Nero option can burn Data DVD and VCD.
+
+* 9. CRW.DLL - This PlugIn allows IrfanView to read Canon CRW/CR2 files.
+               Note: this PlugIn requires additional Canon DLLs: http://irfanview.tuwien.ac.at/plugins/canon_crw.zip
+               (check "Readme_Canon.txt" for instructions and install!)
+
+* 10. CADIMAGE.DLL - This PlugIn allows IrfanView to read CAD formats: DXF, DWG, HPGL, CGM, SVG.
+                     Check "http://www.cadsofttools.com/download/irfanviewplugins.zip" for newest versions and licenses. 
+                     (Shareware, Third party PlugIn)
+
+* 11. DICOM.DLL - This PlugIn allows IrfanView to read Dicom medical files. 
+                  Thanks to Wolfgang Krug and Chris Rorden.
+                  Note: DICOM/ACR/IMA format hasn't a specific header and IrfanView can't recognize all such images. 
+                  If you want to read Dicom/ACR/IMA images with IrfanView, the file extension MUST BE ".dcm", ".acr" or ".ima" !
+
+* 12. DJVU.DLL - This PlugIn allows IrfanView to read DjVu files.
+
+* 13. EAFSH.DLL - This PlugIn allows IrfanView to read/save EA Sports FSH files. 
+                 Thanks to GreyMana: http://www.greymana.de.
+
+* 14. ECW.DLL - This PlugIn allows IrfanView to read/write ECW files (Enhanced Compressed Wavelet).
+
+* 15. EFFECTS.DLL - This PlugIn contains some image effects.
+                    Thanks to GENiEBEN!
+
+* 16. EMAIL.DLL - This PlugIn allows IrfanView to send images as emails.
+
+* 17. EXR.DLL - This PlugIn allows IrfanView to read EXR files.
+
+* 18. FACEDETECT.DLL - This PlugIn allows IrfanView to use the Face Detection feature from Thumbnails window.
+
+* 19. FFACTORY.DLL - This PlugIn allows IrfanView to use Filter Factory 8BF files (Photoshop plugins).
+                     The DLL is based on the Filter Factory library from Michael Johannhanwahr: www.icnet.de.
+                     Thanks Michael!
+
+* 20. FLASH.DLL - This PlugIn allows IrfanView to play Macromedia's Flash/Shockwave/FLV files.
+                  It uses the Flash Player component installed in Internet Explorer.
+                  Thanks to Remio!
+
+* 21. FORMATS.DLL - This PlugIn allows IrfanView to read additional image formats: 
+                  - PSP - Paint Shop Pro format
+                  - IFF/LBM format (Amiga Interchange File Format)
+                  - G3 Fax format
+                  - RAS/SUN format
+                  - Bio-RAD Confocal image format
+                  - Mosaic format
+                  - YUV format
+                  - XBM format
+                  - XPM format
+                  - GLCD format
+                  - MPO format
+                  - BLP format (BLP-2)
+                  - MAG format (MAKI)
+                  - GEM-IMG format
+                  - WBMP - WAP Bitmap
+                  - SGI format (Silicon Graphics Image)
+                  - RLE format (Utah RLE Image)
+                  - TTF format (True Type Font)
+                  - RAW format (RAW data)
+                  - Digital camera RAW formats (ARW CR2 CRW DCR DNG ERF KDC MRW NEF NRW ORF PEF RAF RAW RW2 RWL SRF SRW X3F MOS)
+                  - DDS format (Direct Draw Surface)
+                  - SFW format (Seattle Film Works JPG file)
+                  - CAM format (Casio CAM JPG file)
+                  - KDC format (Kodak Digital Camera files)
+                  - WAD format (WAD3 game files)
+                  - WAL format (Quake 2 textures)
+                  - FITS format (Flexible Image Transport System)
+                  - HDR format (High Dynamic Range)
+                  - PVR format (DreamCast textures)
+
+                  Note: G3 format hasn't a specific header and IrfanView 
+                  can't recognize  all such images. If you want to read G3 
+                  images with IrfanView, the file extension MUST BE ".g3" !
+
+                  Note: Mosaic format hasn't a specific header and IrfanView 
+                  can't recognize  all such images. If you want to read Mosaic 
+                  images with IrfanView, the file extension MUST BE ".mos" !
+
+                  Note: XBM format hasn't a specific header and IrfanView can't 
+                  recognize all such images. If you want to read XBM images with 
+                  IrfanView, the file extension MUST BE ".xbm" !
+
+                  Note: XPM format hasn't a specific header and IrfanView can't 
+                  recognize all such images. If you want to read XPM images with 
+                  IrfanView, the file extension MUST BE ".xpm" !
+
+                  Note: WBMP format hasn't a specific header and IrfanView can't 
+                  recognize all such images. If you want to read WBMP images with 
+                  IrfanView, the file extension MUST BE ".wbmp" !
+
+* 22. FPX.DLL - This PlugIn allows IrfanView to read FlashPix format.
+
+* 23. FUNLTDIV.DLL - This PlugIn allows IrfanView to use Filters Unlimited files (Photoshop PlugIns and filters)
+                     The PlugIn is based on the Library from Michael Johannhanwahr: www.icnet.de
+                     Thanks Michael!
+
+* 24. FTP.DLL -  This PlugIn allows IrfanView to transfer files from Thumbnails window using FTP.
+
+* 25. HDP.DLL - This PlugIn allows IrfanView to read Jpeg-XR/HDP/WDP files (Microsoft HD Photo).
+
+* 26. ICONS.DLL - This PlugIn contains special icons for IrfanView file associations.
+
+* 27. ICS.DLL - This PlugIn allows IrfanView to read ICS files (Image Cytometry Standard). 
+                Thanks to Cris Luengo.
+
+* 28. IMPDF.DLL - This PlugIn allows IrfanView to save PDF files (Portable Document Format).
+                  Thanks to ComSquare AG!
+
+* 29. IMPDN.DLL - This PlugIn allows IrfanView to read PDN files (Paint.NET File Format).
+                  Thanks to ComSquare AG!
+
+* 30. IMPXCF.DLL - This PlugIn allows IrfanView to read XCF files (GIMP File Format).
+                   Thanks to ComSquare AG!
+
+* 31. IRFANVIEW SANDBOX.DLL - This PlugIn allows IrfanView to use JewelScript Effects.
+                              Thanks to Stefan Kuhn!
+
+* 32. IV_PLAYER.EXE - This PlugIn allows IrfanView to play video/sound/audio-cd files using MS Media Player interface.
+                      (AVI, MPG, WAV, MIDI, CDA, WMA, ASF, AIF, SND, WMA/WMV)
+
+* 33. JPEG2000.DLL - This PlugIn allows IrfanView to read/write JPEG-2000 format. 
+                     Note: Third party PlugIn, registration required for saving.
+
+* 34. JPEG_LS.DLL - This PlugIn allows IrfanView to read/write JLS files (JPEG-LS, JPEG Lossless). 
+                    Thanks to KATO Kanryu.
+
+* 35. JPG_TRANSFORM.DLL - This PlugIn allows IrfanView to process lossless JPG transformations: 
+                          vertical flip, horizontal flip, rotation, crop or marker cleaning.
+
+* 36. JPM.DLL - This PlugIn allows IrfanView to read/write JPM format. 
+                (JPEG2000/Part6, Luradocument.JPM) 
+                Note: Third party PlugIn, registration required for saving.
+
+* 37. KDC.DLL - This DLL is created by Kodak Eastman Company. 
+                It allows IrfanView to read KDC files (Kodak Digital Camera). 
+
+* 38. LCMS.DLL - This PlugIn allows IrfanView to use embedded color profiles in JPG/TIF files.
+                 Thanks to Marti Maria! 
+
+* 39. MED.DLL - This PlugIn allows IrfanView to play MED/OctaMED audio files.
+
+* 40. METADATA.DLL - This PlugIn allows IrfanView to handle EXIF/IPTC/Comment information from compatible files.
+
+* 41. MNG.DLL - This PlugIn allows IrfanView to read/play MNG/JNG files.
+
+* 42. MP3.DLL - This PlugIn allows IrfanView to play MP3/MP2/MP1 audio files.
+
+* 43. MRC.DLL - This PlugIn allows IrfanView to read MRC files.
+
+* 44. MRSID.DLL - This PlugIn allows IrfanView to read LizardTech SID files.
+
+* 45. NERO.DLL - This PlugIn allows IrfanView to burn slideshow to data or Video CD, 
+                 using the FULL version of Nero Burning ROM software (www.nero.com).
+                 Used on Win9x and Win2000.
+
+* 46. OCR_KADMOS.DLL - This PlugIn adds OCR features to IrfanView. 
+                       PlugIn URL: http://www.irfanview.info/plugins/kadmos/
+                       Thanks to "re Recognition GmbH".
+
+* 47. PAINT.DLL - This PlugIn allows IrfanView to paint lines, circles, arrows, straighten image etc. 
+                  Thanks to Matteo Italia!
+
+* 48. PHOTOCD.DLL - This DLL is created by Kodak Eastman Company. 
+                    It allows IrfanView to read large resolutions from a PhotoCD file: 
+                    1536 x 1024 and 3072 x 2048 pixels.
+
+* 49. PNGOUT.DLL - This PlugIn allows optimized PNG saving. Thanks to Ken Silverman.
+                   PlugIn URL: http://advsys.net/ken/utils.htm#pngout
+
+* 50. POSTSCRIPT.DLL - This PlugIn allows IrfanView to read PS, EPS, PDF, AI files.
+                       Note: Ghostscript is required:
+                       http://sourceforge.net/projects/ghostscript/
+                       (take the EXE installer, like "gs907w32.exe")
+
+* 51. QUICKTIME.DLL - This PlugIn allows IrfanView to play Apple Quicktime formats: 
+                      MOV, 3GP, MP4, MacPICT, QTIF and FLI/FLC. 
+                      Note: Apple Quicktime must be installed and the PlugIn enabled in:
+                      Properties->Video. 
+                      Download it from Apple: http://www.apple.com/quicktime/download/
+
+* 52. RA_PLAYER.DLL - This PlugIn allows IrfanView to play Real Audio files.
+                      Note: The Real Player must be installed! 
+                      Download it from Real Networks: www.real.com
+
+* 53. REGIONCAPTURE.DLL - This PlugIn allows IrfanView to capture a rectangle area of the screen. 
+                          Thanks to grebulon!
+
+* 54. RIOT.DLL - This PlugIn allows IrfanView to save optimized JPG/GIF/PNG. (RIOT - Radical Image Optimization Tool)
+                 Download (latest version): http://luci.criosweb.ro/download/Riot-plugin.exe
+                 Thanks to Lucian Sabo!
+
+* 55. SFF.DLL - This PlugIn allows IrfanView to read SFF (Structured Fax) files.
+
+* 56. SLIDESHOW.EXE - This PlugIn allows IrfanView to create presentations in EXE or SCR format.
+                      (stand alone executable/screen saver)
+
+* 57. SOUNDPLAYER.DLL - This PlugIn allows IrfanView to play OGG files (Ogg Vorbis).
+
+* 58. TOOLS.DLL - This PlugIn contains some additional functions for IrfanView.
+
+* 59. VIDEO.DLL - This PlugIn allows IrfanView to play many video/sound files.
+                  (AVI, MPG/MPEG/M2TS/MP4/MKV, WAV, MOV, MID/RMI, AIF, AU/SND, WMA/WMV etc.)
+
+* 60. VTF.DLL - This PlugIn allows IrfanView to read VTF (Valve Texture) files.
+                Works on Win9x and Win2000.
+
+* 61. WBZ.DLL - This PlugIn allows IrfanView to read WebShots (WBZ/WBC/WB1) files.
+                Thanks to V. Paramoshin.
+
+* 62. WEBP.DLL - This PlugIn allows IrfanView to read/save Weppy (WEBP) files.
+
+* 63. WSQ.DLL - This PlugIn allows IrfanView to read WSQ (Wavelet Scaler Quantization) files.

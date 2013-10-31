@@ -1,0 +1,12 @@
+#photo_countdown {
+	display : none;
+	position: absolute;
+	left: 30px;
+	top: 150px;
+
+
+	font-family: Comic Sans, Comic Sans MS, cursive;
+	font-size: 250px;
+	color: #FFFFFF;
+	text-shadow: 5px 5px 20px #1F1F20;
+}

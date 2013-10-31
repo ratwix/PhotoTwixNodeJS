@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PhotoTwix</title>
+    <meta name="Photomaton" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Charles Rathouis">
+
+    <!-- Le styles -->
+	<link href="./css/mainstyle.css" rel="stylesheet"/>
+	<link href="./css/gallery.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+	<div id="control">
+		<input type="button" value="Next Effect" onClick="next_effect()"></input>
+		<input type="button" value="Prev Effect" onClick="prev_effect()"></input>
+		<input type="button" value="Init Chroma" onClick="effect_init_chroma_key()"></input>
+		<input type="button" value="Chroma" onClick="g_current_effect = effect_chroma"></input>
+		<input type="button" value="Next Template" onClick="next_photo_theme()"></input>
+		<input type="button" value="Prev Template" onClick="prev_photo_theme()"></input>
+		<input type="button" value="Take Photo" onClick="startPhotoProcess()"></input>
+		<input type="button" value="Get photos" onClick="requestAllPhoto()"></input>
+		<input type="button" value="Build Photos" onClick="build_photo()"></input>
+		<input type="button" value="Show camera" onClick="camera_show()"></input>
+		<input type="button" value="Show coverflow" onClick="gallery_show()"></input>
+		<input type="button" value="Next photo" onClick="gallery_next()"></input>
+		<input type="button" value="Prev photo" onClick="gallery_prev()"></input>
+		<input type="button" value="Zoom" onClick="gallery_zoom()"></input>
+		<input type="button" value="Print Logo" onClick="gallery_select_print()"></input>
+		<input type="button" value="Print" onClick="gallery_print()"></input>
+		<input type="button" value="Delete Logo" onClick="gallery_select_delete()"></input>
+		<input type="button" value="Delete" onClick="gallery_delete()"></input>
+	</div>
+	<div id="photomaton">
+		<!-- Take photo screen. Main screen -->		
+		<div id="screen_photo_take">
+			<video id="basic_video" class="hidden"></video> <!-- This video thread is unshow -->
+			<canvas id="blank_canvas" class="hidden"></canvas> <!-- This video duplication with effect -->
+			<canvas id="effect_canvas" class="hidden"></canvas> <!-- This video duplication with effect -->
+			<div id="div_photo_1">
+				<img id="result_photo_1" class="result_photo"></img>
+				<canvas id="canvas_photo_1" class="canvas_photo"></img>
+			</div>
+			<div id="div_photo_2">
+				<img id="result_photo_2" class="result_photo"></img>
+				<canvas id="canvas_photo_2" class="canvas_photo"></img>			
+			</div>
+			<div id="div_photo_3">
+				<img id="result_photo_3" class="result_photo"></img>
+				<canvas id="canvas_photo_3" class="canvas_photo"></img>		
+			</div>
+			<div id="div_photo_4">
+				<img id="result_photo_4" class="result_photo"></img>
+				<canvas id="canvas_photo_4" class="canvas_photo"></img>			
+			</div>
+			<div id="div_photo_5">
+				<img id="result_photo_5" class="result_photo"></img>
+				<canvas id="canvas_photo_5" class="canvas_photo"></img>			
+			</div>
+			<div id="div_photo_6">
+				<img id="result_photo_6" class="result_photo"></img>
+				<canvas id="canvas_photo_6" class="canvas_photo"></img>			
+			</div>
+			<img id="photo_strip"></img>
+			
+			<div id="photo_countdown"></div>
+			<div id="camera_flash"></div>
+		</div>
+		
+		<div id="screen_coverflow" class='coverflow_show'>
+			<div id="container" class="clickable clearfix thumbs">
+			</div>
+		</div>
+	</div>
+    <!-- Javascript file -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script language="JavaScript" type="text/javascript" src="./lib/jquery-1.8.2.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./lib/jquery.isotope.min.js"></script>
+	
+	<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/init.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/camera_canvas.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/photo_build.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/gallery.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/screen_view.js"></script>
+	
+	<script language="JavaScript" type="text/javascript" src="./template/template_default/loadTheme.js"></script>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	
+    <script>
+    $(document).ready(function() {
+        init_photomaton();
+    });
+    </script>
+  </body>
+</html>

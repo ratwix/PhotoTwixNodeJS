@@ -1,0 +1,45 @@
+#photo_strip{
+	position:absolute;
+	top:30px;
+	left:500px;
+	width:300px;
+	content: url(./template2x6.png);
+}
+
+#div_photo_1{
+	position:absolute;
+	top:43px;
+	left:513px;
+	width:274px;
+}
+
+#div_photo_2{
+	position:absolute;
+	top:213px;
+	left:513px;
+	width:274px;
+}
+
+#div_photo_3{
+	position:absolute;
+	top:387px;
+	left:513px;
+	width:274px;
+}
+
+#div_photo_4{
+	position:absolute;
+	top:557px;
+	left:513px;
+	width:274px;
+}
+
+#div_photo_5{
+	visibility:hidden;
+	width:500px;
+}
+
+#div_photo_6{
+	visibility:hidden;
+	width:600px;
+}

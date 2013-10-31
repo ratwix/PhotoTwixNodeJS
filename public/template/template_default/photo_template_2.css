@@ -1,0 +1,47 @@
+#photo_strip{
+	position:absolute;
+	top:30px;
+	left:200px;
+	width:1000px;
+	content: url(./template6x4.png);
+}
+
+#div_photo_1{
+	position:absolute;
+	top:54px;
+	left:869px;
+	width:304px;
+}
+
+#div_photo_2{
+	position: absolute;
+	top: 246px;
+	left: 871px;
+	-webkit-transform: rotate(-2deg);
+	width: 308px;
+}
+
+#div_photo_3{
+	position: absolute;
+	top: 444px;
+	left: 871px;
+	width: 308px;
+	-webkit-transform: rotate(7deg);
+}
+
+#div_photo_4{
+	position:absolute;
+	top:67px;
+	left:224px;
+	width:618px;
+}
+
+#div_photo_5{
+	visibility:hidden;
+	width:500px;
+}
+
+#div_photo_6{
+	visibility:hidden;
+	width:600px;
+}

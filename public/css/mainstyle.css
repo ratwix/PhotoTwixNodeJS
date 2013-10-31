@@ -1,0 +1,45 @@
+/*
+Main screen (photo)
+*/
+
+/*
+#control {
+	position:absolute;
+	left:0;
+	top:0;	
+}
+*/
+
+.result_photo{
+	display:none;
+	width:100%;
+	height:100%;
+}
+
+.canvas_photo{
+	width:100%;
+	height:100%;
+}
+
+.hidden{
+	position:absolute;
+	display:none;
+}
+
+#camera_flash{
+	display:none;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:#FFF;
+}
+
+.coverflow_show {
+	
+}
+
+.coverflow_hide {
+	margin-left: 3000px;
+}
