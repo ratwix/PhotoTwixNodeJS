@@ -274,7 +274,7 @@ function prev_photo_theme() {
 
 function startPhotoProcess() {
 	g_photo_in_progress = true;
-	startSinglePhotoProcess(g_photo_initial_delay);
+	startSinglePhotoProcess(g_parameter.photo_initial_delay);
 	g_current_photo = 1;
 	showVideo();
 }
@@ -300,7 +300,7 @@ function photoCountdown() {
 		takePhoto(g_current_photo);
 		if (g_current_photo < g_nb_photo) {
 			g_current_photo++;
-			setTimeout(startSinglePhotoProcess.bind(null, g_photo_delay), 1500); //Little delay between two timeout
+			setTimeout(startSinglePhotoProcess.bind(null, g_parameter.photo_delay), 1500); //Little delay between two timeout
 		} else {
 			compileAllPhoto();
 		}

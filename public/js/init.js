@@ -1,22 +1,34 @@
 function init_photomaton() {
 	initSocket();
-	initEvent();
+	initParameter();
+	initControl();
 	initCamera();
 	
 	requestAllPhoto();
 }
 
-//Initialise la connexion avec le server node.js
-function initSocket() {
-	g_socket = io.connect(g_server_address);
+/**
+	Get server parameters
+  */
+function initParameter() {
+	$.get( "getParameters", function(data) {
+		g_parameter = JSON.parse(data);
+	});
 }
 
-//Initialise les events qui peuvent venir du server
-function initEvent() {
-	//Event on Photo Compilation complete
-	g_socket.on('buildPhoto_complete', function(message) {
-		alert('Le serveur dis que la photo est compilée : ' + message);
-	})
+function saveParameters() {
+	$.post( "saveParameters", {param : JSON.stringify(g_parameter)})
+		.done(function(data) {
+			console.log('Parameter saved');
+		})
+		.fail(function(data) {
+			console.log('Fail save parameters');
+		});
+}
+
+//Initialise la connexion avec le server node.js avec https
+function initSocket() {
+	g_socket = io.connect(g_server_address, {secure: true});
 }
 
 //Initialise la webcam

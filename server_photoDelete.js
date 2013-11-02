@@ -1,6 +1,7 @@
 var falseDeletePath = __dirname + "/public/photos/deleted/";
 
 var fs = require('fs');
+var param = require('./server_parameter');
 
 function deletePhoto(deleteObject, trueDelete) {
 	var photo_small = deleteObject.small;
@@ -27,8 +28,7 @@ function deletePhoto(deleteObject, trueDelete) {
 		});
 	}
 	
-	if (trueDelete) {
-		//Delete photo if real delete
+	if (param.getParameter('real_delete') == true) {
 		fs.unlink(__dirname + "/public/" + photo_big, function (err) {
 		  if (err) {
 			console.log("unable to delete big : " + err);
@@ -36,7 +36,9 @@ function deletePhoto(deleteObject, trueDelete) {
 		});	
 	} else {
 		//Else move it to deleted folder
+		
 		var tmp = photo_big.replace(reg, __dirname + "/public/photos/deleted/photo$1");
+		
 		fs.rename(__dirname + "/public/" + photo_big, tmp, function (err) {
 			if (err) {
 				console.log("unable to move : " + err);

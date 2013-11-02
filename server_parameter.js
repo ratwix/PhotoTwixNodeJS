@@ -5,11 +5,14 @@ var parameter_path = "./conf/parameter.json";
 var g_parameters = {
 	printer_rx1:true,			//True if printer is a RX1 and can cut
 	use_money:false,			//Use coin 
-	money_value:[0.2, 0.5, 1.0],	//Possible coin value
+	money_value:[0.5, 1.0, 2.0],	//Possible coin value
 	current_credit:0.0,
 	current_template:"template_default",
 	template_text:"",
-	template_date:""
+	template_date:"",
+	photo_initial_delay:4,
+	photo_delay:3,
+	real_delete:false
 };
 
 function loadParameters() {
@@ -24,7 +27,12 @@ function saveParameters() {
 		} else {
 		  console.log("Parameters saved to " + parameter_path);
 		}
-	}); 
+	});
+}
+
+function saveParametersClient(data) {
+	g_parameters = JSON.parse(data);
+	saveParameters();	
 }
 
 function setParameter(name, value) {
@@ -39,23 +47,26 @@ function getParameter(name) {
 
 function getAllParameters() {
 	loadParameters();
-	return g_parameters;
+	return JSON.stringify(g_parameters);
 }
 
 function resetParameters() {
 	g_parameters.printer_rx1 = true;
 	g_parameters.use_money = false;
-	g_parameters.money_value = [0.2, 0.5, 1.0];	//Possible coin value
+	g_parameters.money_value = [0.5, 1.0, 2.0];	//Possible coin value
 	g_parameters.current_credit = 0.0;
 	g_parameters.current_template = "template_default";
 	g_parameters.template_text = "";
 	g_parameters.template_date = "";
+	g_parameters.photo_initial_delay = 4;
+	g_parameters.g_photo_delay = 3;
 	
 	saveParameters();
 }
 
 exports.loadParameters = loadParameters;
 exports.saveParameters = saveParameters;
+exports.saveParametersClient = saveParametersClient;
 exports.setParameter = setParameter;
 exports.getParameter = getParameter;
 exports.getAllParameters = getAllParameters;

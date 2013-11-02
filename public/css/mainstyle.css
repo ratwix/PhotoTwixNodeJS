@@ -10,6 +10,10 @@ Main screen (photo)
 }
 */
 
+body {
+    overflow:hidden;
+}
+
 .result_photo{
 	display:none;
 	width:100%;

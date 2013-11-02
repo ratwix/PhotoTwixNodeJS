@@ -7,10 +7,12 @@ var g_refresh_rate = 10;
 var g_photo_initial_delay = 2;
 var g_photo_delay = 1;
 
+var g_parameter = "";
+
 //Internal change
 
 var g_socket = 0;
-var g_server_address = 'http://localhost:1443';
+var g_server_address = 'https://localhost:1443';
 
 var g_chroma_key = [0, 0, 0]; //chroma key R G B
 var g_chroma_key_tolerence = 20;
