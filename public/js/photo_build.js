@@ -16,10 +16,12 @@ function build_photo() {
 
 	$.post( "buildPhotos", {photos : JSON.stringify(photos)})
 		.done(function(data) {
+			g_photo_in_progress = false;
 			gallery_show();
 			gallery_add($(data));	//Add the photo to the gallery
 		})
 		.fail(function(data) {
+			g_photo_in_progress = false;
 			console.log('Echec de la compilation des photos');
 		});
 }

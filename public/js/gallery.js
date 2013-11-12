@@ -124,7 +124,7 @@ function gallery_delete_handle() {
 	$('#container').isotope( 'remove', elem);
 }
   
-    //Print current photo
+//Print current photo
 function gallery_print() {
 	var src_small =  $('.thumb_current img').attr('src_small'); 
 	var src_big =  $('.thumb_current img').attr('src_big'); 

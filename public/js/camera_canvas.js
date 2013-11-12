@@ -325,5 +325,4 @@ function takePhoto(current_photo) {
 
 function compileAllPhoto() {
 	build_photo();
-	g_photo_in_progress = false;
 }
