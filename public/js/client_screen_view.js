@@ -1,7 +1,8 @@
 function hideAll() {
 	$("#screen_photo_take")[0].style.display = 'none';
 	$("#screen_coverflow")[0].setAttribute('class', 'coverflow_hide');
-	
+	$("#parameters")[0].style.display = 'none';
+	$("#usb")[0].style.display = 'none';
 } 
  
  function gallery_active() {
@@ -29,4 +30,21 @@ function camera_active() {
 function camera_show() {
 	hideAll()
 	$("#screen_photo_take")[0].style.display = 'block';
+}
+
+function show_parameter() {
+	hideAll();
+	$("#parameters")[0].style.display = 'block';
+}
+
+function show_usb() {
+	hideAll();
+	$("#usb")[0].style.display = 'block';
+}
+
+function usb_active() {
+	if ($("#usb")[0].style.display == 'block') {
+		return true;
+	}
+	return false;
 }

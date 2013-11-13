@@ -3,6 +3,8 @@ var falseDeletePath = __dirname + "/public/photos/deleted/";
 var fs = require('fs');
 var param = require('./server_parameter');
 
+
+
 function deletePhoto(deleteObject, trueDelete) {
 	var photo_small = deleteObject.small;
 	var photo_big = deleteObject.big;
@@ -46,5 +48,7 @@ function deletePhoto(deleteObject, trueDelete) {
 		});
 	}
 }
+
+
  
  exports.deletePhoto = deletePhoto;

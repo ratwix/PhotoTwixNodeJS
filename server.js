@@ -8,6 +8,7 @@
 
 var fs = require('fs');
 var ctr = require('./server_arduino');
+var usb = require('./server_copyUsb');
 
 var express = require('express'),
 //http = require('http'),
@@ -87,12 +88,20 @@ app.post('/saveParameters', function(req, res) {
 	res.send('');
 });
 
+app.post('/copyUsb', function(req, res) {
+	usb.startCopy();
+	
+	res.contentType('text/html');
+	res.send('');
+});
+
 // Chargement de socket.io pour les échanges avec la partie client
 var io = require('socket.io').listen(server); 
 
 // Quand on client se connecte, on écoute les différents évenements
 io.sockets.on('connection', function (socket) {
 	ctr.setSocket(socket);
+	usb.setSocket(socket);
 	global.g_socket = socket;
     console.log('Un client est connecté !');
 });

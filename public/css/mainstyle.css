@@ -14,6 +14,19 @@ body {
     overflow:hidden;
 }
 
+#photomaton {
+	display:block;
+	position: absolute;
+	top:0;
+    left:0;
+	width: 100%;
+	height: 100%;
+	background-size: 100% auto;
+	/*cursor:none;*/
+	overflow-y: hidden;
+	overflow: hidden;
+}
+
 .result_photo{
 	display:none;
 	width:100%;
@@ -46,4 +59,30 @@ body {
 
 .coverflow_hide {
 	margin-left: 3000px;
+}
+
+#copy_txt {
+	width: 100%;
+	left:0px;
+	top: 100px;
+	text-align: center;
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: #DCE0E6;
+	position: absolute;
+}
+
+#copy_progress_bar {
+	top: 200px;
+	width: 80%;
+	left: 10%;
+}
+
+#copy_progress_value_txt {
+	width: 100%;
+	left:0px;
+	text-align: center;
+	top: 320px;
+	font: 400 50px/1 'Kaushan Script', cursive;
+	color: black;
+	position: absolute;
 }

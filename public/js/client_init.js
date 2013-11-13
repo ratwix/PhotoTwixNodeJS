@@ -29,6 +29,7 @@ function saveParameters() {
 //Initialise la connexion avec le server node.js avec https
 function initSocket() {
 	g_socket = io.connect(g_server_address, {secure: true});
+	init_copy_socket();
 }
 
 //Initialise la webcam

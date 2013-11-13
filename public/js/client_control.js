@@ -11,7 +11,7 @@ function init_arduino_control() {
 	//Coin management	
 	g_socket.on('coin', function (data) { //When receive a new coin (1coin = 1 credit. For bigger coin, receive several pulse
 	   addCredit();
-	   saveParameters(); //save parameter if power down, not loosing credit
+
 	});
 	
 	//Keys management
@@ -55,12 +55,48 @@ function init_arduino_control() {
 }
 
 function init_keyboard_control() {
-	
+	$("body").keypress(function(event) {
+		switch(event.which) {
+			case 122: 			// Z for Photo
+				buttonPhoto();
+				break;
+			case 110: 
+				buttonNext();	// N for next
+				break;
+			case 112: 			// P for prev
+				buttonPrev();
+				break;
+			case 116: 			//	T for template
+				buttonTemplate();
+				break;
+			case 103: 
+				buttonGallery();//	G for Gallery
+				break;
+			case 105: 
+				buttonPrint(); // I for Print
+				break;
+			case 100:
+				buttonDelete();	// D for delete
+				break;
+			case 106:
+				buttonGame();	// J for game
+				break;
+			case 99:			// C for credit
+				addCredit();
+				break;
+			case 117:			// U for USB
+				buttonUsb();
+				break;
+			default:
+				break;
+		}
+	});
 }
 
 //Add a credit when coin inserted
 function addCredit() {
 	g_parameter.current_credit += 1;
+	saveParameters(); //save parameter if power down, not loosing credit
 	console.log("CASH !!! Credit:" + g_parameter.current_credit);
 }
 
@@ -135,7 +171,11 @@ function buttonDelete() {
 
 function buttonUsb() {
 	console.log('buttonUsb');
-	//TODO
+	if (!usb_active()) {				//If USB screen is not set, the show USB screen
+		init_first_usb_copy_screen();
+	} else {
+		usb_copy_start();
+	}
 }
 
 function buttonGame() {

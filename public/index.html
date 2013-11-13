@@ -10,24 +10,16 @@
     <!-- Le styles -->
 	<link href="./css/mainstyle.css" rel="stylesheet"/>
 	<link href="./css/gallery.css" rel="stylesheet"/>
+	<link href="./css/progressbar.css" rel="stylesheet"/>
   </head>
 
   <body>
-	<div id="control">
-		<input type="button" value="Next Effect" onClick="next_effect()"></input>
-		<input type="button" value="Prev Effect" onClick="prev_effect()"></input>
-		<input type="button" value="Next Template" onClick="next_photo_theme()"></input>
-		<input type="button" value="Take Photo" onClick="startPhotoProcess()"></input>
-		<input type="button" value="Show camera" onClick="camera_show()"></input>
-		<input type="button" value="Show coverflow" onClick="gallery_show()"></input>
-		<input type="button" value="Next photo" onClick="gallery_next()"></input>
-		<input type="button" value="Prev photo" onClick="gallery_prev()"></input>
-		<input type="button" value="Print" onClick="gallery_print()"></input>
-		<input type="button" value="Delete" onClick="gallery_delete()"></input>
-	</div>
+
 	<div id="photomaton">
+
 		<!-- Take photo screen. Main screen -->		
 		<div id="screen_photo_take">
+		
 			<video id="basic_video" class="hidden"></video> <!-- This video thread is unshow -->
 			<canvas id="blank_canvas" class="hidden"></canvas> <!-- This video duplication with effect -->
 			<canvas id="effect_canvas" class="hidden"></canvas> <!-- This video duplication with effect -->
@@ -60,6 +52,19 @@
 			<div id="photo_countdown"></div>
 			<div id="camera_flash"></div>
 		</div>
+
+		<div id="parameters" style="display:none">
+		
+		</div>
+		
+		<div id="usb" style="display:none">
+			<span id="copy_txt">Copie en cour</span>	
+
+			<div id="copy_progress_bar" class="meter animate">
+				<span id="copy_progress_value"><span>
+			</div>
+			<span id="copy_progress_value_txt"></span>
+		</div>
 		
 		<div id="screen_coverflow" class='coverflow_show'>
 			<div id="container" class="clickable clearfix thumbs">
@@ -68,19 +73,24 @@
 				<img id="photo_preview"></img>
 			</div>
 		</div>
+		
+
+		
+
 	</div>
     <!-- Javascript file -->
     <!-- Placed at the end of the document so the pages load faster -->
 	<script language="JavaScript" type="text/javascript" src="./lib/jquery-1.8.2.min.js"></script>
 	<script language="JavaScript" type="text/javascript" src="./lib/jquery.isotope.min.js"></script>
 	
-	<script language="JavaScript" type="text/javascript" src="./js/common.js"></script>
-	<script language="JavaScript" type="text/javascript" src="./js/init.js"></script>
-	<script language="JavaScript" type="text/javascript" src="./js/camera_canvas.js"></script>
-	<script language="JavaScript" type="text/javascript" src="./js/photo_build.js"></script>
-	<script language="JavaScript" type="text/javascript" src="./js/gallery.js"></script>
-	<script language="JavaScript" type="text/javascript" src="./js/screen_view.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_common.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_init.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_camera_canvas.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_photo_build.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_gallery.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_screen_view.js"></script>
 	<script language="JavaScript" type="text/javascript" src="./js/client_control.js"></script>	
+	<script language="JavaScript" type="text/javascript" src="./js/client_usb_copy.js"></script>	
 	
 	<script language="JavaScript" type="text/javascript" src="./template/template_default/loadTheme.js"></script>
 	

@@ -36,7 +36,10 @@ function handleRequestAllPhoto(data) {
 function gallery_add(photo) {
 	$('#container').find('.thumb_current').removeClass('thumb_current');
 	photo.addClass("thumb_current");
-	$('#container').append(photo).isotope('appended', photo, gallery_adjust_container_position);
+	$('#container').append(photo).isotope('appended', photo, 
+		function () {
+			$('#container').isotope('reLayout', gallery_adjust_container_position);
+		});
 }
 
 function gallery_show_photo_big() {

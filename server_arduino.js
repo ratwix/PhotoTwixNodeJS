@@ -19,28 +19,6 @@ var g_socket;
 
 function init() {	
 	g_board = new five.Board().on("ready", function() {
-
-	//TEST
-	
-	var pin = new five.Pin(13);
-	pin.high();
-	var pin2 = new five.Pin(14);
-	pin2.high();
-	var pin3 = new five.Pin(15);
-	pin3.high();
-	var pin4 = new five.Pin(16);
-	pin4.high();
-	var pin5 = new five.Pin(17);
-	pin5.high();
-	var pin6 = new five.Pin(18);
-	pin6.high();
-	var pin7 = new five.Pin(19);
-	pin7.high();
-	this.analogWrite(20, 200),
-	/*
-	this.pinMode(20, five.Pin.PWM);
-	this.analogWrite(20, 100);
-	*/
 	
     //Money management
 	  this.pinMode(PIN_MONEY, five.Pin.INPUT);
@@ -145,6 +123,9 @@ function init() {
 	  buttonGame.on("hold", function(value){
 		sendMessage('buttonGameHold');
 	  });
+	})
+	.on("error", function(err) {
+		
 	});
 }
 
