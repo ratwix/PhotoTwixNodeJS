@@ -1,24 +1,31 @@
 var five = require("johnny-five");
 
-var PIN_BUTTON_PHOTO 	= 2;
-var PIN_BUTTON_NEXT 	= 3;
-var PIN_BUTTON_PREV 	= 4;
-var PIN_BUTTON_TEMPLATE = 5;
-var PIN_BUTTON_GALLERY 	= 6;
-var PIN_BUTTON_RES 		= 7;
+var PIN_BUTTON_PHOTO 	= 1;
+var PIN_BUTTON_NEXT 	= 2;
+var PIN_BUTTON_PREV 	= 3;
+var PIN_BUTTON_TEMPLATE = 4;
+var PIN_BUTTON_GALLERY 	= 5;
 var PIN_BUTTON_PRINT 	= 8;
 var PIN_BUTTON_DELETE 	= 9;
 var PIN_BUTTON_USB 		= 10;
 var PIN_BUTTON_GAME		= 11;
 var PIN_MONEY 			= 12;
-var PIN_LAMP 			= 20;
+var PIN_LAMP 			= 6;
 
 var photo_pulse 		= 1;			//Define how many photo we can take with 1 pulse
+
+var light;
 
 var g_socket;
 
 function init() {	
 	g_board = new five.Board().on("ready", function() {
+	//Light management
+	 light = new five.Led({
+		pin: PIN_LAMP
+	 });
+	 
+	 light.off();
 	
     //Money management
 	  this.pinMode(PIN_MONEY, five.Pin.INPUT);
@@ -147,5 +154,15 @@ function sendMessage(button) {
 	g_socket.emit(button);	//Send a message
 }
 
+function changeLight(value) {
+	if (value > 0) {
+		light.on();
+		light.brightness(value);
+	} else {
+		light.off();
+	}
+}
+
 exports.init = init;
-exports.setSocket = setSocket;	
+exports.setSocket = setSocket;
+exports.changeLight = changeLight;

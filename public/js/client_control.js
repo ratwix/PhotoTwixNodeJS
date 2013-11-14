@@ -50,7 +50,9 @@ function init_arduino_control() {
 	g_socket.on('buttonGame', function (data) { //When button buttonGame is press
 	   buttonGame();
 	});		
-	
+	g_socket.on('buttonParameter', function (data) { //When button buttonParameter is press (hold USB button)
+	   buttonParameter();
+	});	
 	
 }
 
@@ -87,6 +89,9 @@ function init_keyboard_control() {
 			case 117:			// U for USB
 				buttonUsb();
 				break;
+			case 113:			// Q for parameter
+				buttonParameter();
+				break;				
 			default:
 				break;
 		}
@@ -183,3 +188,6 @@ function buttonGame() {
 	//TODO
 }
 
+function buttonParameter() {
+	show_parameter();
+}

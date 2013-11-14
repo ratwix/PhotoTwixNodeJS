@@ -13,6 +13,7 @@ function init_copy_socket() {
 	   console.log("TOTAL : " + data.total + " CURRENT : " + data.current);
 	   var p = data.current * 100 / data.total;
 	   $("#copy_progress_value")[0].style.width = p.toString() + "%";
+	   $("#copy_progress_value_txt")[0].innerHTML = data.current + "/" + data.total;
 	});
 }
 

@@ -11,6 +11,7 @@
 	<link href="./css/mainstyle.css" rel="stylesheet"/>
 	<link href="./css/gallery.css" rel="stylesheet"/>
 	<link href="./css/progressbar.css" rel="stylesheet"/>
+	<link href="./css/form.css" rel="stylesheet"/>
   </head>
 
   <body>
@@ -54,7 +55,87 @@
 		</div>
 
 		<div id="parameters" style="display:none">
-		
+			<ul class="formul" id="formul_action">
+				<li>
+					<span class="intyp">
+						Délais départ
+					</span>
+					<input type="number" id="parameter_photo_initial_delay" onChange="formToParameter()"/>
+				</li>
+				
+				<li>
+					<span class="intyp">
+						Délais photo
+					</span>
+					<input type="number" id="parameter_photo_delay" onChange="formToParameter()"/>
+				</li>
+				
+				<li>
+					<span class="intyp">
+						Credits (0.5c)
+					</span>
+					<input type="number" id="parameter_current_credit" onChange="formToParameter()"/>
+				</li>				
+				
+				<li>
+					<span class="intyp">
+						Prix par photo
+					</span>
+					<div class="choose" id="price">
+						<input type="radio" name="parameter_price" value="0" id="form_photo_price_free" onclick="formToParameter()"/> <label for="form_photo_price_free">Gratuit</label><br />
+						<input type="radio" name="parameter_price" value="1" id="form_photo_price_050" onclick="formToParameter()"/> <label for="form_photo_price_050">0.5€</label><br />
+						<input type="radio" name="parameter_price" value="2" id="form_photo_price_1" onclick="formToParameter()"/> <label for="form_photo_price_1">1€</label><br />
+						<input type="radio" name="parameter_price" value="4" id="form_photo_price_2" onclick="formToParameter()"/> <label for="form_photo_price_2">2€</label>
+					</div>
+				</li>
+				<li>
+					<span class="intyp">
+						Effacer réel
+					</span>
+					<div class="choose">
+						<input type="checkbox" name="parameter_real_delete" value="true" id="parameter_real_delete" onChange="formToParameter()"/> <label for="parameter_real_delete">Supprimer</label>
+					</div>
+				</li>
+				<li>
+					<span class="intyp">
+						Imprimante
+					</span>
+					<div class="choose">
+						<input type="checkbox" name="parameter_rx1" value="true" id="parameter_rx1" onChange="formToParameter()"/> <label for="parameter_rx1">RX-1 cutter</label>
+					</div>
+				</li>					
+				<li>
+					<span class="intyp">
+						Lumière
+					</span>
+					<div class="slider">
+						<input class="bar" type="range" min="0" max="130" id="parameter_light" value="0" onchange="updateLight()"/>
+						<span class="highlight"></span>
+					</div>
+				</li>
+				<li>
+					<span class="intyp">
+						Actions
+					</span>
+					<div class="choose">
+						<input type="button" id="parameter_poster" value="Générer un poster"/><br/><br/><br/>
+						<input type="button" id="parameter_default" value="Parametres par défaut"/><br/><br/><br/>
+						<input type="button" id="parameter_copyall" value="Tout copier sur USB"/><br/><br/><br/>
+						<input type="button" id="parameter_deleteall" value="Tout effacer"/><br/>
+					</div>
+				</li>
+			</ul>
+			
+			<ul class="formul" id="formul_theme">
+				<li>
+					<span class="intyp">
+						Theme
+					</span>
+					<div class="choose">
+						
+					</div>
+				</li>
+			</ul>
 		</div>
 		
 		<div id="usb" style="display:none">
@@ -91,6 +172,7 @@
 	<script language="JavaScript" type="text/javascript" src="./js/client_screen_view.js"></script>
 	<script language="JavaScript" type="text/javascript" src="./js/client_control.js"></script>	
 	<script language="JavaScript" type="text/javascript" src="./js/client_usb_copy.js"></script>	
+	<script language="JavaScript" type="text/javascript" src="./js/client_parameters.js"></script>
 	
 	<script language="JavaScript" type="text/javascript" src="./template/template_default/loadTheme.js"></script>
 	

@@ -5,11 +5,13 @@ var parameter_path = "./conf/parameter.json";
 var g_parameters = {
 	printer_rx1:true,			//True if printer is a RX1 and can cut
 	use_money:false,			//Use coin 
-	money_value:[0.5, 1.0, 2.0],	//Possible coin value
+	money_value:[0, 0.5, 1.0, 2.0],	//Possible coin value
+	photo_price:0,					//Current photo price
 	current_credit:0.0,
 	current_template:"template_default",
-	template_text:"",
-	template_date:"",
+	template_text1:"",
+	template_text2:"",
+	template_text3:"",
 	photo_initial_delay:4,
 	photo_delay:3,
 	real_delete:false
@@ -56,8 +58,9 @@ function resetParameters() {
 	g_parameters.money_value = [0.5, 1.0, 2.0];	//Possible coin value
 	g_parameters.current_credit = 0.0;
 	g_parameters.current_template = "template_default";
-	g_parameters.template_text = "";
-	g_parameters.template_date = "";
+	g_parameters.template_text1 = "";
+	g_parameters.template_text2 = "";
+	g_parameters.template_text3 = "";	
 	g_parameters.photo_initial_delay = 4;
 	g_parameters.g_photo_delay = 3;
 	

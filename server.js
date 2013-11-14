@@ -96,7 +96,7 @@ app.post('/copyUsb', function(req, res) {
 });
 
 // Chargement de socket.io pour les échanges avec la partie client
-var io = require('socket.io').listen(server); 
+var io = require('socket.io').listen(server, { log: false }); 
 
 // Quand on client se connecte, on écoute les différents évenements
 io.sockets.on('connection', function (socket) {
@@ -104,6 +104,10 @@ io.sockets.on('connection', function (socket) {
 	usb.setSocket(socket);
 	global.g_socket = socket;
     console.log('Un client est connecté !');
+	//Listen for LED change
+	socket.on('socket_led', function (data) {
+		ctr.changeLight(data);
+	});
 });
 
 //On lance le server sur le port 8080

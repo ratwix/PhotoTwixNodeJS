@@ -34,6 +34,7 @@ function camera_show() {
 
 function show_parameter() {
 	hideAll();
+	parameterToForm();								//update form with current parameters
 	$("#parameters")[0].style.display = 'block';
 }
 

@@ -1,30 +1,13 @@
 function init_photomaton() {
 	initSocket();
-	initParameter();
+	getParameter();
 	initControl();
 	initCamera();
 	
 	requestAllPhoto();
 }
 
-/**
-	Get server parameters
-  */
-function initParameter() {
-	$.get( "getParameters", function(data) {
-		g_parameter = JSON.parse(data);
-	});
-}
 
-function saveParameters() {
-	$.post( "saveParameters", {param : JSON.stringify(g_parameter)})
-		.done(function(data) {
-			console.log('Parameter saved');
-		})
-		.fail(function(data) {
-			console.log('Fail save parameters');
-		});
-}
 
 //Initialise la connexion avec le server node.js avec https
 function initSocket() {
