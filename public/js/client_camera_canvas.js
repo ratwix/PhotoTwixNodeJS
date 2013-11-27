@@ -95,11 +95,15 @@ function prev_effect() {
 //////////////////////////////////////////
 
 var effect_null = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_blanc").addClass("selected");
 	return 0;
 }
 
 var effect_grey = function() {
-
+	$("#effect_div img").removeClass("selected");
+	$("#effect_bw").addClass("selected");
+	
 	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
    var effect_canvas = $("#effect_canvas")[0];
@@ -107,17 +111,18 @@ var effect_grey = function() {
 
    var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
    var data = imageData.data;
-   for (var i = 0; i < data.length; i += 4) {
-      var bright = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
-      data[i] = bright;
-      data[i + 1] = bright;
-      data[i + 2] = bright;
-   }
+   
+   hueSaturation(data, -1, -1);
+   
    effect_canvas_context.putImageData(imageData, 0, 0);
 }
 
-var effect_sepia = function() {
 
+
+var effect_sepia = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_sepia").addClass("selected");
+	
    if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
    var effect_canvas = $("#effect_canvas")[0];
@@ -125,28 +130,15 @@ var effect_sepia = function() {
 
    var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
    var data = imageData.data;
-   for (var i = 0; i < data.length; i += 4) {	  
-		var or = data[i];
-		var og = data[i + 1];
-		var ob = data[i + 2];
-	
-		var r = (or * 0.393 + og * 0.769 + ob * 0.189);
-		var g = (or * 0.349 + og * 0.686 + ob * 0.168);
-		var b = (or * 0.272 + og * 0.534 + ob * 0.131);
-	  
-		if (r < 0) r = 0; if (r > 255) r = 255;
-		if (g < 0) g = 0; if (g > 255) g = 255;
-		if (b < 0) b = 0; if (b > 255) b = 255;
-	  
-		data[i] = r;
-		data[i + 1] = g;
-		data[i + 2] = b;
-   }
+   
+   sepia(data, 1);
+
    effect_canvas_context.putImageData(imageData, 0, 0);
 }
 
-
 var effect_bright = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_light").addClass("selected");
 
 	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
@@ -155,36 +147,8 @@ var effect_bright = function() {
 
    var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
    var data = imageData.data;
-
-
-	var brightMul = 1.2;
-	var contrast = 1.3;
-	var p = g_basic_video_x * g_basic_video_y;
-	var pix = p*4, pix1, pix2;
 	
-	var r, g, b;
-	while (p--) {
-		if ((r = data[pix-=4] * brightMul * contrast) > 255 )
-			data[pix] = 255;
-		else if (r < 0)
-			data[pix] = 0;
-		else
-			data[pix] = r;
-
-		if ((g = data[pix1=pix+1] * brightMul * contrast) > 255 ) 
-			data[pix1] = 255;
-		else if (g < 0)
-			data[pix1] = 0;
-		else
-			data[pix1] = g;
-
-		if ((b = data[pix2=pix+2] * brightMul * contrast) > 255 ) 
-			data[pix2] = 255;
-		else if (b < 0)
-			data[pix2] = 0;
-		else
-			data[pix2] = b;
-	}
+	brightnessContrast(data, 0.20, 0.36);
 	effect_canvas_context.putImageData(imageData, 0, 0);
 	
 }

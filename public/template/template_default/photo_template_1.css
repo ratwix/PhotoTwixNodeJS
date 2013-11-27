@@ -1,36 +1,37 @@
 #photo_strip{
 	position:absolute;
 	top:30px;
-	left:500px;
+	left:450px;
 	width:300px;
 	content: url(./template2x6.png);
+	-webkit-box-shadow: -2px 12px 12px 8px rgba(12, 12, 12, 0.5);
 }
 
 #div_photo_1{
 	position:absolute;
-	top:43px;
-	left:513px;
+	top:50px;
+	left:463px;
 	width:274px;
 }
 
 #div_photo_2{
 	position:absolute;
-	top:213px;
-	left:513px;
+	top:217px;
+	left:463px;
 	width:274px;
 }
 
 #div_photo_3{
 	position:absolute;
 	top:387px;
-	left:513px;
+	left:463px;
 	width:274px;
 }
 
 #div_photo_4{
 	position:absolute;
-	top:557px;
-	left:513px;
+	top:554px;
+	left:463px;
 	width:274px;
 }
 

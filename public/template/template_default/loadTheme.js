@@ -2,8 +2,8 @@ function loadTheme() {
 	g_photo_theme = [];
 	g_photo_theme.push(loadPhotoTheme1);
 	g_photo_theme.push(loadPhotoTheme2);
-	/*
 	g_photo_theme.push(loadPhotoTheme3);
+	/*
 	g_photo_theme.push(loadPhotoThemeVideo);
 	*/
 	loadGeneralTheme();

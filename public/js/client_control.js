@@ -102,7 +102,9 @@ function init_keyboard_control() {
 function addCredit() {
 	g_parameter.current_credit += 1;
 	saveParameters(); //save parameter if power down, not loosing credit
-	console.log("CASH !!! Credit:" + g_parameter.current_credit);
+	//console.log("CASH !!! Credit:" + g_parameter.current_credit);
+	hide_insert_money();
+	show_credit();
 }
 
 /******************************
@@ -115,6 +117,7 @@ function buttonPhoto() {
 		if (camera_active()) {		//If on photo screen, take a photo
 			startPhotoProcess();
 		} else {
+			showVideo();
 			camera_show();			//Else go to camera
 		}
 	}

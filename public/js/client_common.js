@@ -2,6 +2,9 @@ var g_basic_video_x = 0;
 var g_basic_video_y = 0;
 var g_is_streaming = false;
 
+var g_gl_canvas = "";
+var g_gl_texture = "";
+
 var g_refresh_rate = 10;
 
 var g_photo_initial_delay = 2;

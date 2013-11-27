@@ -3,11 +3,8 @@ function init_photomaton() {
 	getParameter();
 	initControl();
 	initCamera();
-	
 	requestAllPhoto();
 }
-
-
 
 //Initialise la connexion avec le server node.js avec https
 function initSocket() {

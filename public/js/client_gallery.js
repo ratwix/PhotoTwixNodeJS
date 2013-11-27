@@ -132,15 +132,39 @@ function gallery_print() {
 	var src_small =  $('.thumb_current img').attr('src_small'); 
 	var src_big =  $('.thumb_current img').attr('src_big'); 
 		
-	$.ajax({
-		type: "POST",
-		url:"/printPhoto",
-		data: {big:src_big},
-		success: gallery_print_handle
-	});
+	if (enough_credit()) {
+		$.ajax({
+			type: "POST",
+			url:"/printPhoto",
+			data: {big:src_big},
+			success: gallery_print_handle
+		});
+	}
 }
   
 function gallery_print_handle() {
 	$('#container').isotope('reLayout', gallery_adjust_container_position);
-	//TODO : Diminuer le credit si il n'y a pas eu d'erreur
+	decrease_credit();
+}
+
+function enough_credit() {
+	if (g_parameter.photo_price == 0) {
+		return true;
+	}
+	
+	if ((g_parameter.current_credit - g_parameter.photo_price) >= 0) {
+		return true;
+	}
+	show_insert_money();
+	return false;
+}
+
+function decrease_credit() {
+	g_parameter.current_credit -= g_parameter.photo_price;
+	
+	if (g_parameter.current_credit < 0) {
+		g_parameter.current_credit = 0;
+	}
+	saveParameters();
+	show_credit();
 }

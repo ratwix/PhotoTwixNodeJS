@@ -10,6 +10,7 @@ function getParameter() {
 function saveParameters() {
 	$.post( "saveParameters", {param : JSON.stringify(g_parameter)})
 		.done(function(data) {
+			show_credit();
 			console.log('Parameter saved');
 		})
 		.fail(function(data) {

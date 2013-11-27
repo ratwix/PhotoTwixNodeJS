@@ -2,14 +2,6 @@
 Main screen (photo)
 */
 
-/*
-#control {
-	position:absolute;
-	left:0;
-	top:0;	
-}
-*/
-
 body {
     overflow:hidden;
 }
@@ -85,4 +77,59 @@ body {
 	font: 400 50px/1 'Kaushan Script', cursive;
 	color: black;
 	position: absolute;
+}
+
+#current_credit {
+	top: 20px;
+	right:10px;
+	text-align: right;
+	font: 400 30px/1 'Tequilla Sunrise', cursive;
+	color: white;
+	position: absolute;
+}
+
+#screen_insert_money {
+	top: 0px;
+	left: 0px;
+	height:100%;
+	width:100%;
+	background-color: rgba(69, 112, 255, 0.9);
+	position: absolute;
+	z-index: 30;
+	text-align:center;
+}
+
+#insert_money {
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	width:80%;
+}
+
+#money_cost {
+	font: 400 50px/1 'Tequilla Sunrise', cursive;
+	color: white;
+	position: absolute;
+	top: 70px;
+	left:70px;
+}
+
+#effect_div {
+	position: absolute;
+	top:100px;
+	right:100px;
+}
+
+#effect_div li {
+	padding-bottom:20px;
+	list-style-type:none;
+}
+
+#effect_div img {
+	width:150px;
+}
+
+#effect_div .selected {
+	border-radius:30px;
+	border: 10px dotted #fe0000;
 }

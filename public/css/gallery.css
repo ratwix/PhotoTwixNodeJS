@@ -92,7 +92,7 @@
 
 #div_photo_preview {
 	float:right;
-	top:30px;
+	top:130px;
 	right:10px;
 	line-height: 800px;
 	width:50%;
@@ -100,10 +100,10 @@
 }
 
 #div_photo_preview  img {
-	/*margin-top:50px;*/
-	max-height:90%;
+	margin-top:100px;
+	max-height:85%;
 	max-width:95%;
 	vertical-align: middle;
 	-webkit-transform:rotate(6deg);
-	-webkit-box-shadow: -2px 12px 12px 8px rgba(119, 119, 119, 0.76);
+	-webkit-box-shadow: -2px 12px 12px 8px rgba(12, 12, 12, 0.5);
 }

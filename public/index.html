@@ -50,6 +50,15 @@
 			</div>
 			<img id="photo_strip"></img>
 			
+			<div id="effect_div">
+				<ul>
+					<li><img id="effect_blanc" src="img/effect_normal.png" class="selected"></img></li>
+					<li><img id="effect_bw" src="img/effect_bw.png"></img></li>
+					<li><img id="effect_sepia" src="img/effect_sepia.png"></img></li>
+					<li><img id="effect_light" src="img/effect_light.png"></img></li>
+				</ul>
+			</div>
+			
 			<div id="photo_countdown"></div>
 			<div id="camera_flash"></div>
 		</div>
@@ -153,11 +162,17 @@
 			<div id="div_photo_preview">
 				<img id="photo_preview"></img>
 			</div>
+			<div id="div_insert_coin">
+				<img id="insert_coin"></img>
+				<span id="credit_value"></span>
+			</div>
+			<span id="current_credit"></span>
 		</div>
 		
-
-		
-
+		<div id="screen_insert_money" style="display:none">
+			<img id="insert_money" src="img/coin.png"></img>
+			<span id="money_cost"></span>
+		</div>
 	</div>
     <!-- Javascript file -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -173,6 +188,7 @@
 	<script language="JavaScript" type="text/javascript" src="./js/client_control.js"></script>	
 	<script language="JavaScript" type="text/javascript" src="./js/client_usb_copy.js"></script>	
 	<script language="JavaScript" type="text/javascript" src="./js/client_parameters.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/client_effects.js"></script>
 	
 	<script language="JavaScript" type="text/javascript" src="./template/template_default/loadTheme.js"></script>
 	
