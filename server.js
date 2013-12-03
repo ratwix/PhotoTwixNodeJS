@@ -95,6 +95,13 @@ app.post('/copyUsb', function(req, res) {
 	res.send('');
 });
 
+app.post('/changeText', function(req, res) {
+	require('./server_changeText').changeText(req.body.value);
+	
+	res.contentType('text/html');
+	res.send('');
+});
+
 // Chargement de socket.io pour les échanges avec la partie client
 var io = require('socket.io').listen(server, { log: false }); 
 

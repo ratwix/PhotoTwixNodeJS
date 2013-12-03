@@ -58,3 +58,21 @@ function updateLight() {
 	//TODO : envoyer par socket la valeur de la lumiere pour update du teensy
 	g_socket.emit('socket_led', light);
 }
+
+function changeText() {
+	var text = {
+		"text1":$("#text1").val(),
+		"text2":$("#text2").val(),
+		"text3":$("#text3").val()
+	}
+	
+	var json = JSON.stringify(text);
+	
+	$.post( "changeText", {value : json})
+		.done(function(data) {
+			console.log('Text changed');
+		})
+		.fail(function(data) {
+			console.log('Fail text change');
+		});
+}

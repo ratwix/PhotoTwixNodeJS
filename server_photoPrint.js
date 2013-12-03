@@ -3,6 +3,7 @@ var Canvas = require('canvas');
 var Winreg = require('winreg');
 var log = function () {};
 
+
 var iv_path = '"' + __dirname + '/bin/IrfanView/i_view32.exe' + '"';
 
 var imt_path = '';

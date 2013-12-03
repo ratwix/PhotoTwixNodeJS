@@ -19,8 +19,7 @@
 	<div id="photomaton">
 
 		<!-- Take photo screen. Main screen -->		
-		<div id="screen_photo_take">
-		
+		<div id="screen_photo_take">	
 			<video id="basic_video" class="hidden"></video> <!-- This video thread is unshow -->
 			<canvas id="blank_canvas" class="hidden"></canvas> <!-- This video duplication with effect -->
 			<canvas id="effect_canvas" class="hidden"></canvas> <!-- This video duplication with effect -->
@@ -133,18 +132,19 @@
 						<input type="button" id="parameter_deleteall" value="Tout effacer"/><br/>
 					</div>
 				</li>
-			</ul>
-			
-			<ul class="formul" id="formul_theme">
 				<li>
 					<span class="intyp">
-						Theme
+						Template
 					</span>
 					<div class="choose">
-						
+						<input type="text" id="text1" value="Text 1"/>
+						<input type="text" id="text2" value="Text 2"/>
+						<input type="text" id="text3" value="Text 3"/>
+						<input type="button" id="change_text" value="Changer le texte" onClick="changeText()"/><br/>
 					</div>
 				</li>
 			</ul>
+			
 		</div>
 		
 		<div id="usb" style="display:none">

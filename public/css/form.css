@@ -91,6 +91,11 @@ ul.formul li input[type=text], ul.formul li input[type=number], ul.formul li tex
 	box-shadow: inset 0 0 4px 4px #f4f4f4;
 	line-height: 34px;
 }
+
+ul.formul li input[type=text] {
+	width: 350px;
+}
+
 ul.formul li textarea {
 	height: 150px;
 	overflow: auto;
