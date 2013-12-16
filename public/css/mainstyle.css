@@ -4,6 +4,7 @@ Main screen (photo)
 
 body {
     overflow:hidden;
+	cursor:none;
 }
 
 #photo_countdown {

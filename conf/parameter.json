@@ -1,1 +1,1 @@
-{"printer_rx1":true,"use_money":true,"money_value":[0.5,1,2],"photo_price":"1","current_credit":0,"current_template":"template_default","template_text1":"","template_text2":"","template_text3":"","template_date":"","photo_initial_delay":4,"photo_delay":3,"real_delete":false}
+{"printer_rx1":true,"use_money":false,"money_value":[0.5,1,2],"photo_price":"1","current_credit":1,"current_template":"template_default","template_text1":"","template_text2":"","template_text3":"","template_date":"","photo_initial_delay":4,"photo_delay":3,"real_delete":false,"g_photo_delay":3}

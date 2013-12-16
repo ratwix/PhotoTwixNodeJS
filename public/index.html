@@ -117,7 +117,7 @@
 						Lumière
 					</span>
 					<div class="slider">
-						<input class="bar" type="range" min="0" max="130" id="parameter_light" value="0" onchange="updateLight()"/>
+						<input class="bar" type="range" min="0" max="40" id="parameter_light" value="0" onchange="updateLight()"/>
 						<span class="highlight"></span>
 					</div>
 				</li>
@@ -127,8 +127,7 @@
 					</span>
 					<div class="choose">
 						<input type="button" id="parameter_poster" value="Générer un poster"/><br/><br/><br/>
-						<input type="button" id="parameter_default" value="Parametres par défaut"/><br/><br/><br/>
-						<input type="button" id="parameter_copyall" value="Tout copier sur USB"/><br/><br/><br/>
+						<input type="button" id="parameter_default" value="Parametres par défaut" onclick="resetParameters()"/><br/><br/><br/>
 						<input type="button" id="parameter_deleteall" value="Tout effacer"/><br/>
 					</div>
 				</li>
@@ -190,7 +189,7 @@
 	<script language="JavaScript" type="text/javascript" src="./js/client_parameters.js"></script>
 	<script language="JavaScript" type="text/javascript" src="./js/client_effects.js"></script>
 	
-	<script language="JavaScript" type="text/javascript" src="./template/template_default/loadTheme.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./template/template_noel/loadTheme.js"></script>
 	
 	<script src="/socket.io/socket.io.js"></script>
 	

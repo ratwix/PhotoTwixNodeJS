@@ -18,8 +18,10 @@ var light;
 
 var g_socket;
 
+var g_isPhoto = true;
+
 function init() {	
-	g_board = new five.Board().on("ready", function() {
+	g_board = new five.Board({port:"COM6"}).on("ready", function() {
 	//Light management
 	 light = new five.Led({
 		pin: PIN_LAMP
@@ -128,12 +130,99 @@ function init() {
 	  });
 	  
 	  buttonGame.on("hold", function(value){
-		sendMessage('buttonGameHold');
+		switchPhotoArcade();
 	  });
 	})
 	.on("error", function(err) {
 		
 	});
+}
+
+function switchPhotoArcade() {
+	if (g_isPhoto) {
+		killChrome();
+		launchHyperspin();
+	} else {
+		killHyperspin();
+		launchChrome();
+	}
+	
+	//kill Chrome
+	
+	//Launch Hyperspin
+}
+
+function launchChrome() {
+	//On lance chrome
+	var cmd = "Chrome.exe --incognito --kiosk https://localhost:1443/";
+
+	var exec = require('child_process').exec,
+				child;
+
+	if (require('os').platform() == 'win32') {
+		cmd = cmd.replace(/\//g, "\\"); //comment if linux system
+		cmd = cmd.replace(/\\\.\\/g, "\\"); //comment if linux system
+	}
+
+	child = exec(cmd,
+	  function (error, stdout, stderr) {
+		if (error !== null) {
+		  console.log('exec error: ' + error);
+		}
+	});
+	
+	g_isPhoto = true;
+}
+
+function killChrome() {
+	//On lance chrome
+	var cmd = "taskkill /IM chrome.exe";
+
+	var exec = require('child_process').exec,
+				child;
+
+	child = exec(cmd,
+	  function (error, stdout, stderr) {
+		if (error !== null) {
+		  console.log('exec error: ' + error);
+		}
+	});
+	
+	g_isPhoto = false;
+}
+
+function launchHyperspin() {
+	//On lance chrome
+	var cmd = "startup_hyperspin.bat";
+
+	var exec = require('child_process').exec,
+				child;
+
+	child = exec(cmd,
+	  function (error, stdout, stderr) {
+		if (error !== null) {
+		  console.log('exec error: ' + error);
+		}
+	});
+	
+	g_isPhoto = false;
+}
+
+function killHyperspin() {
+	//On lance chrome
+	var cmd = "taskkill /IM hyperspin.exe";
+
+	var exec = require('child_process').exec,
+				child;
+
+	child = exec(cmd,
+	  function (error, stdout, stderr) {
+		if (error !== null) {
+		  console.log('exec error: ' + error);
+		}
+	});
+	
+	g_isPhoto = true;
 }
 
 /**
@@ -166,3 +255,4 @@ function changeLight(value) {
 exports.init = init;
 exports.setSocket = setSocket;
 exports.changeLight = changeLight;
+exports.launchChrome = launchChrome;

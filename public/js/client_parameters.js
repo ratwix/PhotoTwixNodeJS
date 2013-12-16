@@ -18,6 +18,16 @@ function saveParameters() {
 		});
 }
 
+function resetParameters() {
+	$.post( "resetParameters", {})
+		.done(function(data) {
+			getParameter();
+		})
+		.fail(function(data) {
+			console.log('Fail reset parameters');
+		});
+}
+
 /**
   * Update form from g_parameter
   */

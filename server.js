@@ -13,8 +13,8 @@ var usb = require('./server_copyUsb');
 var express = require('express'),
 //http = require('http'),
 https = require('https');
-privateKey  = fs.readFileSync(__dirname + '/sslcert/privatekey.pem'),
-certificate = fs.readFileSync(__dirname + '/sslcert/certificate.pem'),
+privateKey  = fs.readFileSync(__dirname + '/sslcert/phototwix_private.pem'),
+certificate = fs.readFileSync(__dirname + '/sslcert/phototwix_public.pem'),
 credentials = {key: privateKey, cert: certificate};
 
 //On créer un server express
@@ -88,6 +88,13 @@ app.post('/saveParameters', function(req, res) {
 	res.send('');
 });
 
+app.post('/resetParameters', function(req, res) {
+	var param = require('./server_parameter').resetParameters();
+	
+	res.contentType('text/html');
+	res.send('');
+});
+
 app.post('/copyUsb', function(req, res) {
 	usb.startCopy();
 	
@@ -120,6 +127,11 @@ io.sockets.on('connection', function (socket) {
 //On lance le server sur le port 8080
 server.listen(1443);
 
-//On initialise l'arduino
+//On initialise l'arduino et on lance Chrome sur la photo
 
 ctr.init();
+
+setTimeout(function() {
+	ctr.launchChrome();
+}, 4000);
+

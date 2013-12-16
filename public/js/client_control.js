@@ -2,6 +2,9 @@
 	Init all controls
 */
 
+var alt_press = false;
+var ctrl_press = false;
+
 function initControl() {
 	init_arduino_control();
 	init_keyboard_control();
@@ -57,45 +60,67 @@ function init_arduino_control() {
 }
 
 function init_keyboard_control() {
-	$("body").keypress(function(event) {
-		switch(event.which) {
-			case 122: 			// Z for Photo
-				buttonPhoto();
-				break;
-			case 110: 
-				buttonNext();	// N for next
-				break;
-			case 112: 			// P for prev
-				buttonPrev();
-				break;
-			case 116: 			//	T for template
-				buttonTemplate();
-				break;
-			case 103: 
-				buttonGallery();//	G for Gallery
-				break;
-			case 105: 
-				buttonPrint(); // I for Print
-				break;
-			case 100:
-				buttonDelete();	// D for delete
-				break;
-			case 106:
-				buttonGame();	// J for game
-				break;
-			case 99:			// C for credit
-				addCredit();
-				break;
-			case 117:			// U for USB
-				buttonUsb();
-				break;
-			case 113:			// Q for parameter
-				buttonParameter();
-				break;				
-			default:
-				break;
+	$("body").keypress(function(event) {	
+		//if (alt_press && ctrl_press) {
+			switch(event.which) {
+				case "z".charCodeAt(0): 			// Z for Photo
+					buttonPhoto();
+					break;
+				case "n".charCodeAt(0): 
+					buttonNext();	// N for next
+					break;
+				case "p".charCodeAt(0): 			// P for prev
+					buttonPrev();
+					break;
+				case "t".charCodeAt(0): 			//	T for template
+					buttonTemplate();
+					break;
+				case "g".charCodeAt(0): 
+					buttonGallery();//	G for Gallery
+					break;
+				case "i".charCodeAt(0): 
+					buttonPrint(); // I for Print
+					break;
+				case "d".charCodeAt(0):
+					buttonDelete();	// D for delete
+					break;
+				case "j".charCodeAt(0):
+					buttonGame();	// J for game
+					break;
+				case "c".charCodeAt(0):			// C for credit
+					addCredit();
+					break;
+				case "u".charCodeAt(0):			// U for USB
+					buttonUsb();
+					break;
+				case "q".charCodeAt(0):			// Q for parameter
+					buttonParameter();
+					break;				
+				default:
+					break;
+			}
+		//}
+	});
+	
+	$("body").keyup(function(event) {
+		if (event.which == 18) {
+			alt_press = false;
+		}
+		
+		if (event.which == 17) {
+			ctrl_press = false;
 		}
 	});
+	
+	$("body").keydown(function(event) {
+		if (event.which == 16) {
+			alt_press = true;
+		}
+		
+		if (event.which == 17) {
+			ctrl_press = true;
+		}
+	});	
 }
 
 //Add a credit when coin inserted

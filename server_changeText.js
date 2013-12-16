@@ -39,7 +39,7 @@ function replace_text_in_file(text, path, base, dest) {
 function call_photoshop_transformation(path, psd, script) {
 	fs.exists(path + psd, function(exists) {
 		if (exists) {
-			var cmd = "photoshop.exe " + __dirname + "/" + path + psd + " " + __dirname + "/" + path + script;
+			var cmd = __dirname + "/bin/PhotoshopCS5.exe " + __dirname + "/" + path + psd + " " + __dirname + "/" + path + script;
 	
 			var exec = require('child_process').exec,
 			child;

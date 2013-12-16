@@ -47,7 +47,7 @@ function print() {
 	if (require('os').platform() == 'win32') {
 		cmd = cmd.replace(/\//g, "\\"); //comment if linux system
 	}
-	//cmd = cmd + " /print";
+	cmd = cmd + " /print";
 	log("CMD : " + cmd);
 	child = exec(cmd,
 	  function (error, stdout, stderr) {
