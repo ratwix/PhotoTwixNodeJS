@@ -4,6 +4,7 @@
  
 $container = $('#container');
 
+
 //Request list of all actual photos to populate the gallery
 function requestAllPhoto() {
 	//loading_show();
@@ -22,7 +23,7 @@ function handleRequestAllPhoto(data) {
 		  itemSelector : '.thumb',
 		  masonry : {
 			columnWidth : 80
-		  },
+		  }
 		});
 		if ($('.thumb_current').length > 0) {
 			$top = $('.thumb_current').offset().top;

@@ -7,7 +7,7 @@ var ctrl_press = false;
 
 function initControl() {
 	init_arduino_control();
-	init_keyboard_control();
+	//init_keyboard_control();
 }
 
 function init_arduino_control() {
@@ -52,7 +52,8 @@ function init_arduino_control() {
 
 	g_socket.on('buttonGame', function (data) { //When button buttonGame is press
 	   buttonGame();
-	});		
+	});	
+	
 	g_socket.on('buttonParameter', function (data) { //When button buttonParameter is press (hold USB button)
 	   buttonParameter();
 	});	
@@ -154,6 +155,8 @@ function buttonNext() {
 		next_effect();
 	} else if (gallery_active()) {
 		gallery_next();			//Else next photo gallery
+	} else if (parameter_active()) {
+		plusLight();
 	}
 }
 
@@ -163,6 +166,8 @@ function buttonPrev() {
 		prev_effect();
 	} else if (gallery_active()) {
 		gallery_prev();			//Else previous photo gallery
+	} else if (parameter_active()) {
+		minLight();
 	}
 }
 
@@ -213,7 +218,7 @@ function buttonUsb() {
 
 function buttonGame() {
 	console.log('buttonGame');
-	//TODO
+	//TODO, create games
 }
 
 function buttonParameter() {

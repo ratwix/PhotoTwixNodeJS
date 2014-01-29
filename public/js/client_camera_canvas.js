@@ -266,6 +266,7 @@ function photoCountdown() {
 			g_current_photo++;
 			setTimeout(startSinglePhotoProcess.bind(null, g_parameter.photo_delay), 1500); //Little delay between two timeout
 		} else {
+			showLoading();
 			compileAllPhoto();
 		}
 		
@@ -273,8 +274,8 @@ function photoCountdown() {
 }
 
 function takePhoto(current_photo) {
-	g_photo_sound.play();
 	$("#camera_flash").show().delay(250).fadeOut(250);
+	g_photo_sound.play();	
 	var png_effect = $("#effect_canvas")[0].toDataURL();
 	var png_blank = $("#blank_canvas")[0].toDataURL();
 	

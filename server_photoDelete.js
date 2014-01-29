@@ -49,6 +49,33 @@ function deletePhoto(deleteObject, trueDelete) {
 	}
 }
 
+function deleteAll() {
+	emptyDir(__dirname + "/public/photos/deleted");
+	emptyDir(__dirname + "/public/photos/result");
+	emptyDir(__dirname + "/public/photos/thumbs");
+	emptyDir(__dirname + "/public/photos/without_effects");
+}
 
+function emptyDir(dirPath) {
+	fs.readdir(dirPath, function(err, files) {
+		files.forEach(function(file) {
+			var filePath = dirPath + "\\" + file;
+			fs.stat(filePath, function(err, stats) {
+				if (err) {
+					console.log(JSON.stringify(err));
+				} else {
+					if (stats.isFile()) {
+						fs.unlink(filePath, function(err) {
+							if (err) {
+								console.log(JSON.stringify(err));
+							}
+						});
+					}
+				}
+			});
+		});
+	});
+}
  
- exports.deletePhoto = deletePhoto;
+exports.deletePhoto = deletePhoto;
+exports.deleteAll = deleteAll;

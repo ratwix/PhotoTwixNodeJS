@@ -69,6 +69,34 @@ function updateLight() {
 	g_socket.emit('socket_led', light);
 }
 
+function plusLight() {
+	var light = $('#parameter_light').val();
+	light = parseInt(light) + 1;
+	if (light <= $('#parameter_light').attr('max')) {
+		$('#parameter_light').val(light);
+		updateLight();
+	}
+}
+
+function minLight() {
+	var light = $('#parameter_light').val();
+	light = parseInt(light) - 1;
+	if (light >= $('#parameter_light').attr('min')) {
+		$('#parameter_light').val(light);
+		updateLight();
+	}
+}
+
+function deleteAll() {
+	$.post( "deleteAll", {})
+		.done(function(data) {
+			location.assign(location.href);
+		})
+		.fail(function(data) {
+			console.log('Fail deleteAll');
+		});
+}
+
 function changeText() {
 	var text = {
 		"text1":$("#text1").val(),

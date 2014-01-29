@@ -111,11 +111,16 @@ function init() {
 	  //USB button	 
 	  buttonUsb = new five.Button({
 		pin: PIN_BUTTON_USB,
-		isPullup: true
+		isPullup: true,
+		holdtime: 3000 //3 second hold for game to switch to properties
 	  });
 	  
 	  buttonUsb.on("down", function(value){
 		sendMessage('buttonUsb');
+	  });
+	  
+	  buttonUsb.on("hold", function(value){
+		sendMessage('buttonParameter');
 	  });
 	  
 	  //Game button	 
@@ -211,6 +216,19 @@ function launchHyperspin() {
 function killHyperspin() {
 	//On lance chrome
 	var cmd = "taskkill /IM hyperspin.exe";
+
+	var exec = require('child_process').exec,
+				child;
+
+	child = exec(cmd,
+	  function (error, stdout, stderr) {
+		if (error !== null) {
+		  console.log('exec error: ' + error);
+		}
+	});
+	
+		//On lance chrome
+	var cmd = "taskkill /IM hyperlaunch.exe";
 
 	var exec = require('child_process').exec,
 				child;

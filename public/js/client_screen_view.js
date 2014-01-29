@@ -3,6 +3,7 @@ function hideAll() {
 	$("#screen_coverflow")[0].setAttribute('class', 'coverflow_hide');
 	$("#parameters")[0].style.display = 'none';
 	$("#usb")[0].style.display = 'none';
+    $("#loading")[0].style.display='none';
 	show_credit();
 
 } 
@@ -74,6 +75,13 @@ function show_parameter() {
 	$("#parameters")[0].style.display = 'block';
 }
 
+function parameter_active() {
+	if ($("#parameters")[0].style.display == 'block') {
+		return true;
+	}
+	return false;
+}
+
 function show_usb() {
 	hideAll();
 	$("#usb")[0].style.display = 'block';
@@ -84,4 +92,13 @@ function usb_active() {
 		return true;
 	}
 	return false;
+}
+
+//Show the loading point
+function showLoading() {
+        $("#loading")[0].style.display='block';        
+}
+
+function hideLoading() {
+        $("#loading")[0].style.display='none';        
 }

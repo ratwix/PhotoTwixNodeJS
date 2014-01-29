@@ -1,7 +1,6 @@
 
 //Build a photo object from multiple current photo
 function build_photo() {
-
 	var template_path = $("#photo_strip")[0].src;
 	var photos = new Object();
 	
@@ -19,10 +18,12 @@ function build_photo() {
 			g_photo_in_progress = false;
 			gallery_show();
 			gallery_add($(data));	//Add the photo to the gallery
+			hideLoading();
 		})
 		.fail(function(data) {
 			g_photo_in_progress = false;
 			console.log('Echec de la compilation des photos');
+			hideLoading();
 		});
 }
 

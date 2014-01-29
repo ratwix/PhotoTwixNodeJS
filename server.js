@@ -20,7 +20,8 @@ credentials = {key: privateKey, cert: certificate};
 //On créer un server express
 var app = express();
 //var server = http.createServer(app);
-
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
 var server = https.createServer(credentials, app);
 
 //Tout les élements public sont dans le répertoire public.
@@ -96,14 +97,22 @@ app.post('/resetParameters', function(req, res) {
 });
 
 app.post('/copyUsb', function(req, res) {
-	usb.startCopy();
+	eventEmitter.emit('startUsbCopy');
+	res.contentType('text/html');
+	res.send('');
+});
+
+eventEmitter.on('startUsbCopy', function () { usb.startCopy(); });
+
+app.post('/changeText', function(req, res) {
+	require('./server_changeText').changeText(req.body.value);
 	
 	res.contentType('text/html');
 	res.send('');
 });
 
-app.post('/changeText', function(req, res) {
-	require('./server_changeText').changeText(req.body.value);
+app.post('/deleteAll', function(req, res) {
+	require('./server_photoDelete').deleteAll();
 	
 	res.contentType('text/html');
 	res.send('');

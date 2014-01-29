@@ -12,6 +12,7 @@
 }
 
 /**** Isotope CSS3 transitions ****/
+/*
 
 .isotope,
 .isotope .isotope-item {
@@ -37,7 +38,7 @@
        -o-transition-property:      -o-transform, opacity;
           transition-property:         transform, opacity;
 }
-
+*/
 /**** disabling Isotope CSS3 transitions ****/
 
 .isotope.no-transition,

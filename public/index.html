@@ -12,6 +12,7 @@
 	<link href="./css/gallery.css" rel="stylesheet"/>
 	<link href="./css/progressbar.css" rel="stylesheet"/>
 	<link href="./css/form.css" rel="stylesheet"/>
+	<link href="./css/load.css" rel="stylesheet"/>
   </head>
 
   <body>
@@ -128,7 +129,7 @@
 					<div class="choose">
 						<input type="button" id="parameter_poster" value="Générer un poster"/><br/><br/><br/>
 						<input type="button" id="parameter_default" value="Parametres par défaut" onclick="resetParameters()"/><br/><br/><br/>
-						<input type="button" id="parameter_deleteall" value="Tout effacer"/><br/>
+						<input type="button" id="parameter_deleteall" value="Tout effacer" onclick="deleteAll()"/><br/>
 					</div>
 				</li>
 				<li>
@@ -172,6 +173,12 @@
 			<img id="insert_money" src="img/coin.png"></img>
 			<span id="money_cost"></span>
 		</div>
+		
+		<div id="loading" class="bubblingG" style="display:none">
+                        <span id="bubblingG_1"></span>
+                        <span id="bubblingG_2"></span>
+                        <span id="bubblingG_3"></span>
+         </div>
 	</div>
     <!-- Javascript file -->
     <!-- Placed at the end of the document so the pages load faster -->

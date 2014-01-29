@@ -7,6 +7,10 @@ body {
 	cursor:none;
 }
 
+#parameters {
+	cursor:auto;
+}
+
 #photo_countdown {
 	display : none;
 	position: absolute;
@@ -94,7 +98,7 @@ body {
 	text-align: center;
 	top: 320px;
 	font: 400 50px/1 'Kaushan Script', cursive;
-	color: black;
+	color: #DCE0E6;
 	position: absolute;
 }
 

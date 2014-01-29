@@ -18,10 +18,10 @@ function init_copy_socket() {
 }
 
 function usb_copy_start() {
-	$("#copy_txt")[0].innerHTML = "Copy en cour";
+	$("#copy_txt")[0].innerHTML = "Copie en cours";
 	$.post( "copyUsb")
 	.done(function() {
-		$("#copy_txt")[0].innerHTML = "Copy terminée";
+		$("#copy_txt")[0].innerHTML = "Copie terminée";
 	})
 	.fail(function(data) {
 		$("#copy_txt")[0].innerHTML = "Echec lors de la copie";

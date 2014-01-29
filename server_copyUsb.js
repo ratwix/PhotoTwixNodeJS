@@ -7,7 +7,7 @@
  var g_current_copy = 0;
  var g_max_copy = 0;
  
- function startCopy() {
+ var startCopy = function() {
 	var drive = "";
 	//Find the USB key
 	g_current_copy = 0;
@@ -32,17 +32,30 @@
 	g_max_copy = files.length;
 	for (var i in files) {
 		console.log("Copy file ./public/photos/result/" + files[i] + " to " + drive + 'phototwix/' + path.basename(files[i]));
-		fse.copy('./public/photos/result/' + files[i], drive + 'phototwix/' + path.basename(files[i]), function(err){
-		  if (err) {
-			console.error(err);
-			return;
-		  }
-		  g_current_copy++;
-		  sendMessage();
-		});
+  		g_current_copy++;
+		sendMessage();		
+		//copyFileSync('./public/photos/result/' + files[i], drive + 'phototwix/' + path.basename(files[i]));
 	}
 	
  }
+ 
+ function copyFileSync(srcFile, destFile) {
+  var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
+  BUF_LENGTH = 64 * 1024;
+  buff = new Buffer(BUF_LENGTH);
+  fdr = fs.openSync(srcFile, "r");
+  fdw = fs.openSync(destFile, "w");
+  bytesRead = 1;
+  pos = 0;
+  while (bytesRead > 0) {
+    bytesRead = fs.readSync(fdr, buff, 0, BUF_LENGTH, pos);
+ //   fs.writeSync(fdw, buff, 0, bytesRead);
+    pos += bytesRead;
+  }
+  fs.closeSync(fdr);
+
+  return fs.closeSync(fdw);
+};
  
  function setSocket(socket) {
 	console.log('Socket set');
