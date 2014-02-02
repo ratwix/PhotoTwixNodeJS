@@ -56,8 +56,7 @@ function init_arduino_control() {
 	
 	g_socket.on('buttonParameter', function (data) { //When button buttonParameter is press (hold USB button)
 	   buttonParameter();
-	});	
-	
+	});
 }
 
 function init_keyboard_control() {

@@ -1,14 +1,16 @@
  var fs = require('fs');
- var fse = require('fs-extra');
+ var fs = require('fs-extra');
  var path = require('path');
  var copysync = require('copysync');
  
+ var g_files;
  var g_socket;
  var g_current_copy = 0;
  var g_max_copy = 0;
+ var drive = "";
  
  var startCopy = function() {
-	var drive = "";
+	drive = "";
 	//Find the USB key
 	g_current_copy = 0;
 	for (var i = 100; i <= 120; i++) {
@@ -28,47 +30,41 @@
 		return;
 	}
  
-	var files = fs.readdirSync('./public/photos/result');
-	g_max_copy = files.length;
-	for (var i in files) {
-		console.log("Copy file ./public/photos/result/" + files[i] + " to " + drive + 'phototwix/' + path.basename(files[i]));
-  		g_current_copy++;
-		sendMessage();		
-		//copyFileSync('./public/photos/result/' + files[i], drive + 'phototwix/' + path.basename(files[i]));
-	}
-	
+	g_files = fs.readdirSync('./public/photos/result');
+	g_max_copy = g_files.length;
+	g_current_copy = 0;
+	copy_next();
  }
  
- function copyFileSync(srcFile, destFile) {
-  var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
-  BUF_LENGTH = 64 * 1024;
-  buff = new Buffer(BUF_LENGTH);
-  fdr = fs.openSync(srcFile, "r");
-  fdw = fs.openSync(destFile, "w");
-  bytesRead = 1;
-  pos = 0;
-  while (bytesRead > 0) {
-    bytesRead = fs.readSync(fdr, buff, 0, BUF_LENGTH, pos);
- //   fs.writeSync(fdw, buff, 0, bytesRead);
-    pos += bytesRead;
-  }
-  fs.closeSync(fdr);
-
-  return fs.closeSync(fdw);
-};
+ function copy_next() {
+	console.log("Copy file ./public/photos/result/" + g_files[g_current_copy] + " to " + drive + 'phototwix/' + path.basename(g_files[g_current_copy]));
+	if (g_current_copy < g_max_copy) {
+		fs.copy('./public/photos/result/' + g_files[g_current_copy], drive + 'phototwix/' + path.basename(g_files[g_current_copy]), function(err) {
+			if (err) {
+				g_socket.emit('copyUsbError');
+			} else {		
+				sendMessage();
+				g_current_copy++;
+				if (g_current_copy < g_max_copy) {
+					copy_next();
+				}
+			}
+		});
+	}
+ }
  
  function setSocket(socket) {
-	console.log('Socket set');
+	console.log('Socket set USB ');
 	g_socket = socket;
 }
 
 function sendMessage() {
-	g_socket.emit("copyUsbProgress", {
-		current:g_current_copy,
+	g_socket.emit('copyUsbProgress', {
+		current:g_current_copy + 1,
 		total:g_max_copy
 	});	//Send a message
 }
 
- exports.setSocket = setSocket;	
+exports.setSocket = setSocket;	
  
 exports.startCopy = startCopy;

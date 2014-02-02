@@ -1,10 +1,13 @@
 var fs = require('fs');
+var fs = require('fs-extra');
 var Canvas = require('canvas');
 var Winreg = require('winreg');
 var log = function () {};
 
 
 var iv_path = '"' + __dirname + '/bin/IrfanView/i_view32.exe' + '"';
+
+var iv_path_short = 'bin/IrfanView/';
 
 var imt_path = '';
 
@@ -21,6 +24,12 @@ function printPhoto(printObject) {
 	img.src = data;
 	
 
+	if (img.height < img.width) {
+		select_orientation(true);
+	} else {
+		select_orientation(false);
+	}
+	
 	if (img.height / img.width > 2) {
 		//Image has to be duplicate, and cutter has to be twice
 		var canvas = new Canvas(img.width * 2, img.height);
@@ -35,6 +44,14 @@ function printPhoto(printObject) {
 		img_path = photo_big;
 		load_printer_json('./conf/printer_nocut.json', print);
 		//direct print photo, no problem
+	}
+}
+
+function select_orientation(landscape, callback) {
+	if (landscape) {
+		fs.copySync(iv_path_short + 'i_view32_landscape.ini', iv_path_short + 'i_view32.ini');
+	} else {
+		fs.copySync(iv_path_short + 'i_view32_portrait.ini', iv_path_short + 'i_view32.ini');
 	}
 }
 

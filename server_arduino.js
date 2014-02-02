@@ -252,7 +252,7 @@ function add_photo() {
 }
 
 function setSocket(socket) {
-	console.log('Socket set');
+	console.log('Socket set Arduino');
 	g_socket = socket;
 }
 

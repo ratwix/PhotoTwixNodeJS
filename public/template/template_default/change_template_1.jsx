@@ -69,7 +69,7 @@ try {
     // the front document
 } catch(e) {}
 
-changeText("Joyeux Noel", 45, "2013", 45, "2013", 45);
+changeText("Bonne annee", 45, "2014", 45, "Text 3", 45);
 savePng();
 
 

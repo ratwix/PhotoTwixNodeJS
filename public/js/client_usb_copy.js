@@ -15,13 +15,17 @@ function init_copy_socket() {
 	   $("#copy_progress_value")[0].style.width = p.toString() + "%";
 	   $("#copy_progress_value_txt")[0].innerHTML = data.current + "/" + data.total;
 	});
+	g_socket.on('copyUsbError', function (data) {
+	   $("#copy_txt")[0].innerHTML = "Echec lors de la copie";
+	});	
+	
 }
 
 function usb_copy_start() {
 	$("#copy_txt")[0].innerHTML = "Copie en cours";
 	$.post( "copyUsb")
 	.done(function() {
-		$("#copy_txt")[0].innerHTML = "Copie terminée";
+		$("#copy_txt")[0].innerHTML = "Copie";
 	})
 	.fail(function(data) {
 		$("#copy_txt")[0].innerHTML = "Echec lors de la copie";
