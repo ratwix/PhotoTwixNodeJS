@@ -6,7 +6,7 @@
 }
 
 #formul_action {
-	width:700px;
+	width:100%;
 	margin-left:10px;
 }
 
@@ -157,6 +157,12 @@ ul.formul li div.choose {
 	box-shadow: inset 0 0 4px 4px #f4f4f4;
 	position: relative;
 }
+
+ul.formul li div.choose_large {
+	width: 95%;
+}
+
+
 #foo:checked::before, input[type="checkbox"], #foo:checked::before, input[type="radio"] {
 	position: absolute;
 	clip: rect(0,0,0,0);

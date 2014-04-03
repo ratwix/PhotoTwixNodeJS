@@ -3,9 +3,36 @@ Main screen (photo)
 */
 
 body {
+	background-image:url(../img/wallpaper1.jpg);
+	background-repeat:repeat;
+}
+
+body.normal {
     overflow:hidden;
+	overflow-y: hidden;
 	cursor:none;
 }
+
+body.parameter {
+
+}
+
+.template_item {
+	float: left;
+	width: 18%;
+	margin: 0.5em 0;
+	text-align: center;
+}
+
+.template_item_img {
+	max-width:100%;
+	max-height:150px;
+}
+
+.template_item_check {
+
+}
+
 
 #parameters {
 	cursor:auto;
@@ -25,8 +52,7 @@ body {
 }
 
 #photomaton {
-	background-image:url(../img/wallpaper1.jpg);
-	background-repeat:repeat;
+
 }
 
 #photomaton {
@@ -38,8 +64,8 @@ body {
 	height: 100%;
 	background-size: 100% auto;
 	/*cursor:none;*/
-	overflow-y: hidden;
-	overflow: hidden;
+	/*overflow-y: hidden;*/
+	/*overflow: hidden;*/
 }
 
 .result_photo{

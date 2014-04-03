@@ -4,6 +4,8 @@
 function getParameter() {
 	$.get( "getParameters", function(data) {
 		g_parameter = JSON.parse(data);
+		parameterToForm();
+		loadTheme();
 	});
 }
 
@@ -31,6 +33,9 @@ function resetParameters() {
 /**
   * Update form from g_parameter
   */
+/**
+  * Update form from g_parameter
+  */
 function parameterToForm() {
 	$('#parameter_rx1').attr('checked', g_parameter.printer_rx1);
 	$('#parameter_photo_initial_delay').val(g_parameter.photo_initial_delay);
@@ -38,6 +43,13 @@ function parameterToForm() {
 	$('#parameter_current_credit').val(g_parameter.current_credit);
 	$('#parameter_real_delete').attr('checked', g_parameter.real_delete);
 	$('input[name=parameter_price]').filter('[value=' + g_parameter.photo_price + ']').prop('checked', true);
+	if (g_parameter.templates) {
+		//Les templates
+		for (var i = 0; i < g_parameter.templates.length; i++) {
+			var o = g_parameter.templates[i];
+			$('#' + o.name).attr('checked', o.checked);
+		}
+	}
 }
 
 /**
@@ -60,7 +72,33 @@ function formToParameter() {
 	g_parameter.photo_delay = photo_delay;
 	g_parameter.real_delete = real_delete;
 	
+	/* Save templates */
+	var templates = $('.template_item_check');
+	templates.each(function() {		
+		var object = new Object();;
+		
+		object.name = this.getAttribute('name');
+		object.checked = this.checked;
+		object.template_css = this.getAttribute('template_css');
+		object.nb_photos = this.getAttribute('nb_photos');
+		object.img_path = this.getAttribute('img_path');
+		object.img_cut = this.getAttribute('img_cut');
+		//Ajout d'autres elements
+		
+		if (!g_parameter.templates) {
+			g_parameter.templates = [];
+		}
+		
+		g_parameter.templates.push(object);
+	});
+	
 	saveParameters();
+}
+
+function modTemplate() {
+	//TODO renew parameters
+	loadTheme();
+	formToParameter();
 }
 
 function updateLight() {

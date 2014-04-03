@@ -1,4 +1,5 @@
 function hideAll() {
+	$("body").attr('class', 'normal');
 	$("#screen_photo_take")[0].style.display = 'none';
 	$("#screen_coverflow")[0].setAttribute('class', 'coverflow_hide');
 	$("#parameters")[0].style.display = 'none';
@@ -72,6 +73,7 @@ function camera_show() {
 function show_parameter() {
 	hideAll();
 	parameterToForm();								//update form with current parameters
+	$("body").attr('class', 'parameter');
 	$("#parameters")[0].style.display = 'block';
 }
 
