@@ -8,9 +8,11 @@ textarea { font-family: monospace; }
 
 #picture_editing_control {
 	position:fixed;
-	top:50px;
+	top:0px;
 	left:0px;
-	height:50px;
+	height:110px;
+	width:100%;
+	background: rgba(179, 196, 255, .5);
 	z-index:100;
 }
 

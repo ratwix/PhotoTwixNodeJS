@@ -15,7 +15,13 @@ function init_template_editor(template_path) {
 	var imageSrc = g_base_blank_path + template_path;
 
 	img.onload = function() {
-		g_canvas = new fabric.Canvas('image_editor');
+		
+		if (g_canvas) {
+			g_canvas.clear();
+		} else {
+			g_canvas = new fabric.Canvas('image_editor');
+		}
+		
 		g_canvas.setHeight(img.height);
 		g_canvas.setWidth(img.width);
 		
@@ -189,7 +195,9 @@ function picture_editing_save_file() {
 		});
 }
 
-
+function picture_editing_cancel() {
+	show_parameter();
+}
 /*
 function picture_editor_zoomIn() {
     // TODO limit the max g_canvas zoom in

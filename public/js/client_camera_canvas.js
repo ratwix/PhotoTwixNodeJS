@@ -6,6 +6,15 @@ var g_photo_theme_id = 0;
 var g_count_interval = 0;
 var g_current_photo = 1;
 
+var g_context_1;
+var g_context_2;
+var g_context_3;
+var g_context_4;
+var g_context_5;
+var g_context_6;
+var g_context_effect;
+var g_context_blank;
+
 //////////////////////////////////////////
 ////	Canvas management
 //////////////////////////////////////////
@@ -38,10 +47,35 @@ function showVideo() {
 function draw_canvas() {
 	var effect_canvas = $("#effect_canvas")[0];
 
+	if ($("#canvas_photo_1")[0].style.display != "none") {
+		g_context_1.drawImage(effect_canvas, 0, 0);
+	}
+	
+	if ($("#canvas_photo_2")[0].style.display != "none") {
+		g_context_2.drawImage(effect_canvas, 0, 0);
+	}
+	
+	if ($("#canvas_photo_3")[0].style.display != "none") {
+		g_context_3.drawImage(effect_canvas, 0, 0);
+	}
+	
+	if ($("#canvas_photo_4")[0].style.display != "none") {
+		g_context_4.drawImage(effect_canvas, 0, 0);
+	}
+	
+	if ($("#canvas_photo_5")[0].style.display != "none") {
+		g_context_5.drawImage(effect_canvas, 0, 0);
+	}
+	
+	if ($("#canvas_photo_6")[0].style.display != "none") {
+		g_context_6.drawImage(effect_canvas, 0, 0);
+	}
+	/*
 	for (var i = 1; i <= 6; i++) {
 		if ($("#canvas_photo_" + i.toString())[0].style.display != "none")
 			$("#canvas_photo_" + i.toString())[0].getContext('2d').drawImage(effect_canvas, 0, 0);
 	}
+	*/
 }
 
 //////////////////////////////////////////
@@ -49,6 +83,15 @@ function draw_canvas() {
 //////////////////////////////////////////
 
 function init_canvas_effect() {
+	g_context_1 = $("#canvas_photo_1")[0].getContext('2d');
+	g_context_2 = $("#canvas_photo_2")[0].getContext('2d');
+	g_context_3 = $("#canvas_photo_3")[0].getContext('2d');
+	g_context_4 = $("#canvas_photo_4")[0].getContext('2d');
+	g_context_5 = $("#canvas_photo_5")[0].getContext('2d');
+	g_context_6 = $("#canvas_photo_6")[0].getContext('2d');
+	g_context_effect = $("#effect_canvas")[0].getContext('2d');
+	g_context_blank = $("#blank_canvas")[0].getContext('2d');
+
 	var effect_canvas = $("#effect_canvas")[0];
 	var effect_canvas_context = effect_canvas.getContext('2d');
 	effect_canvas_context.translate(g_basic_video_x, 0);
@@ -58,15 +101,16 @@ function init_canvas_effect() {
 	g_effect_filter.push(effect_grey);
 	g_effect_filter.push(effect_sepia);
 	g_effect_filter.push(effect_bright);
-	//g_effect_filter.push(effect_bright);
 }
 
 function draw_canvas_effect() {
 	var basic_video = $("#basic_video")[0];
-	var effect_canvas = $("#effect_canvas")[0];
-	var effect_canvas_context = effect_canvas.getContext('2d');
-	var blank_canvas = $("#blank_canvas")[0];
-	var blank_canvas_context = blank_canvas.getContext('2d');
+	//var effect_canvas = $("#effect_canvas")[0];
+	//var effect_canvas_context = effect_canvas.getContext('2d');
+	var effect_canvas_context = g_context_effect;
+	//var blank_canvas = $("#blank_canvas")[0];
+	//var blank_canvas_context = blank_canvas.getContext('2d');
+	var blank_canvas_context = g_context_blank;
 	effect_canvas_context.drawImage(basic_video, 0, 0, g_basic_video_x, g_basic_video_y);
 	blank_canvas_context.drawImage(basic_video, 0, 0, g_basic_video_x, g_basic_video_y);
 	if (typeof(g_effect_filter[g_current_effect_id]) == "function") {
@@ -106,9 +150,10 @@ var effect_grey = function() {
 	
 	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
-   var effect_canvas = $("#effect_canvas")[0];
-   var effect_canvas_context = effect_canvas.getContext('2d');
-
+   //var effect_canvas = $("#effect_canvas")[0];
+   //var effect_canvas_context = effect_canvas.getContext('2d');
+   var effect_canvas_context = g_context_effect;
+   
    var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
    var data = imageData.data;
    
@@ -125,9 +170,10 @@ var effect_sepia = function() {
 	
    if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
-   var effect_canvas = $("#effect_canvas")[0];
-   var effect_canvas_context = effect_canvas.getContext('2d');
-
+   //var effect_canvas = $("#effect_canvas")[0];
+   //var effect_canvas_context = effect_canvas.getContext('2d');
+   var effect_canvas_context = g_context_effect;
+   
    var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
    var data = imageData.data;
    
@@ -142,9 +188,10 @@ var effect_bright = function() {
 
 	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
-   var effect_canvas = $("#effect_canvas")[0];
-   var effect_canvas_context = effect_canvas.getContext('2d');
-
+   //var effect_canvas = $("#effect_canvas")[0];
+   //var effect_canvas_context = effect_canvas.getContext('2d');
+   var effect_canvas_context = g_context_effect;
+   
    var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
    var data = imageData.data;
 	

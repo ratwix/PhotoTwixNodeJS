@@ -5,7 +5,7 @@ var g_is_streaming = false;
 var g_gl_canvas = "";
 var g_gl_texture = "";
 
-var g_refresh_rate = 10;
+var g_refresh_rate = 100;
 
 var g_photo_initial_delay = 2;
 var g_photo_delay = 1;

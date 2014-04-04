@@ -1605,10 +1605,11 @@
 		<div id="screen_edit_template" style="display:none">
 			<div id="picture_editing_control">			
 				<div id="picture_editing_common-wrapper" style="margin-top: 10px" ng-show="getText()" class="">
-					<button id="picture_editing_save" onclick="picture_editing_save_file()">Sauvegarder</button> 
-					<button id="picture_editing_add_text" onclick="picture_editor_add_text();">Ajout texte</button>
+					<button id="picture_editing_save" onclick="picture_editing_save_file()">Sauvegarder</button>
+					<button id="picture_editing_cancel" onclick="picture_editing_cancel()">Annuler</button> 
+					<button id="picture_editing_add_text" onclick="picture_editor_add_text();">Texte</button>
 					<input type="file" id="uploadedFile" onChange="picture_editor_load_image" style='display:none'/>
-					<button id="picture_editing_add_image" id="picture_add_image" onclick="$('#uploadedFile').trigger('click')">Ajout image</button>
+					<button id="picture_editing_add_image" id="picture_add_image" onclick="$('#uploadedFile').trigger('click')">Image</button>
 					<button id="picture_editing_front" id="picture_front" onclick="picture_editing_bring_to_front()">Avant</button>
 					<button id="picture_editing_back" id="picture_back" onclick="picture_editing_bring_to_back()">Arriere</button>
 					<button id="picture_editing_del_current" onclick="picture_editor_delete_selected();">Supprimer</button>

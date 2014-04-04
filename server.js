@@ -24,6 +24,8 @@ var events = require('events');
 var eventEmitter = new events.EventEmitter();
 var server = https.createServer(credentials, app);
 
+var argv = require('optimist').argv;
+
 //Tout les élements public sont dans le répertoire public.
 //Des que le navigateur va demander du css ou du js, ca ira le chercher dans la partie public
 
@@ -76,7 +78,7 @@ app.post('/printPhoto', function(req, res) {
 });
 
 app.get('/getParameters', function(req, res) {
-	var param = require('./server_parameter').getAllParameters();
+	var param = require('./server_parameter').getAllParameters(debug);
 	
 	res.contentType('text/html');
 	res.send(param);
@@ -146,10 +148,15 @@ io.sockets.on('connection', function (socket) {
 server.listen(1443);
 
 //On initialise l'arduino et on lance Chrome sur la photo
-//TODO remove comment for prod
 
-ctr.init();
+if (argv.debug) {
+	console.log("En mode de developpement debug, pas d'init d'arduino");
+} else {
+	ctr.init();
 
-setTimeout(function() {
-	ctr.launchChrome();
-}, 4000);
+	setTimeout(function() {
+		ctr.launchChrome();
+	}, 4000);
+}
+
+
