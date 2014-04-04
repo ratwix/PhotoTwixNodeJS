@@ -1,10 +1,12 @@
 function hideAll() {
 	$("body").attr('class', 'normal');
+	window.scrollTo(0, 0);
 	$("#screen_photo_take")[0].style.display = 'none';
 	$("#screen_coverflow")[0].setAttribute('class', 'coverflow_hide');
 	$("#parameters")[0].style.display = 'none';
 	$("#usb")[0].style.display = 'none';
     $("#loading")[0].style.display='none';
+	$("#screen_edit_template")[0].style.display = 'none';
 	show_credit();
 
 } 
@@ -103,4 +105,11 @@ function showLoading() {
 
 function hideLoading() {
         $("#loading")[0].style.display='none';        
+}
+
+function show_template_edit(img) {
+	hideAll();
+	$("body").attr('class', 'parameterblank');
+	$("#screen_edit_template")[0].style.display = 'block';
+	init_template_editor(img);
 }

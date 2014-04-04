@@ -1,0 +1,20 @@
+textarea { font-family: monospace; }
+
+#picture_editing_text_controls { display: inline-block; vertical-align: top; margin-left: 10px; border: 1px dotted #ccc; padding: 10px; width: 220px; }
+#picture_editing_text_controls textarea { float: left; margin-right: 10px; }
+
+#picture_editing_text_controls_additional { display: inline-block; vertical-align: top; border: 1px dotted #ccc; padding: 10px; }
+#picture_editing_text_controls_additional button { vertical-align: top; display: block; margin-bottom: 7px; }
+
+#picture_editing_control {
+	position:fixed;
+	top:50px;
+	left:0px;
+	height:50px;
+	z-index:100;
+}
+
+#picture_editing_editor {
+	top:170px;
+	position:absolute;
+}

@@ -102,6 +102,15 @@ app.post('/copyUsb', function(req, res) {
 	res.send('');
 });
 
+//Get a new template
+app.post('/saveTemplate', function(req, res) {
+	//var template = JSON.parse(req.body.template)
+	var tmp = require('./server_Template').saveTemplate(JSON.parse(req.body.template));
+
+	res.contentType('text/html');
+	res.send('');
+});
+
 eventEmitter.on('startUsbCopy', function () { usb.startCopy(); });
 
 app.post('/changeText', function(req, res) {
@@ -137,10 +146,10 @@ io.sockets.on('connection', function (socket) {
 server.listen(1443);
 
 //On initialise l'arduino et on lance Chrome sur la photo
+//TODO remove comment for prod
 
 ctr.init();
 
 setTimeout(function() {
 	ctr.launchChrome();
 }, 4000);
-

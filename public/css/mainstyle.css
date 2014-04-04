@@ -3,17 +3,23 @@ Main screen (photo)
 */
 
 body {
-	background-image:url(../img/wallpaper1.jpg);
-	background-repeat:repeat;
+
 }
 
 body.normal {
     overflow:hidden;
 	overflow-y: hidden;
 	cursor:none;
+	background-image:url(../img/wallpaper1.jpg);
+	background-repeat:repeat;
 }
 
 body.parameter {
+	background-image:url(../img/wallpaper1.jpg);
+	background-repeat:repeat;
+}
+
+body.parameterblank {
 
 }
 
