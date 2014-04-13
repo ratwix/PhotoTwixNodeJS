@@ -13,9 +13,9 @@ function init_template_editor(template_path) {
 
 	var img = new Image();
 	var imageSrc = g_base_blank_path + template_path;
-
+	
 	img.onload = function() {
-		
+		//Create the canvas from the picture
 		if (g_canvas) {
 			g_canvas.clear();
 		} else {
@@ -25,8 +25,15 @@ function init_template_editor(template_path) {
 		g_canvas.setHeight(img.height);
 		g_canvas.setWidth(img.width);
 		
-		g_canvas.setBackgroundImage(g_base_blank_path + template_path, g_canvas.renderAll.bind(g_canvas));			
-					
+		g_canvas.setBackgroundImage(g_base_blank_path + template_path, g_canvas.renderAll.bind(g_canvas));		
+		
+		//Get the canvas edition
+		$.post("getTemplateJson", {template : JSON.stringify(template_path)})
+		.done(function(data) {
+			if (data != "") {
+				g_canvas.loadFromJSON(data);	
+			}
+		})
 	};
 
 	img.src = imageSrc;
@@ -184,6 +191,12 @@ function picture_editing_save_file() {
 	template.filename = g_current_edit_template;
 	template.data = data;
 	
+	//Serialisation
+	
+	var json = JSON.stringify(g_canvas);
+	console.log(json);
+	template.json = json;
+	
 	$.post( "saveTemplate", {template : JSON.stringify(template)})
 		.done(function(data) {
 			console.log('Sauvegarde du template');
@@ -198,98 +211,3 @@ function picture_editing_save_file() {
 function picture_editing_cancel() {
 	show_parameter();
 }
-/*
-function picture_editor_zoomIn() {
-    // TODO limit the max g_canvas zoom in
-    
-    g_canvasScale = g_canvasScale * SCALE_FACTOR;
-    
-    g_canvas.setHeight(g_canvas.getHeight() * SCALE_FACTOR);
-    g_canvas.setWidth(g_canvas.getWidth() * SCALE_FACTOR);
-    
-    var objects = g_canvas.getObjects();
-    for (var i in objects) {
-        var scaleX = objects[i].scaleX;
-        var scaleY = objects[i].scaleY;
-        var left = objects[i].left;
-        var top = objects[i].top;
-        
-        var tempScaleX = scaleX * SCALE_FACTOR;
-        var tempScaleY = scaleY * SCALE_FACTOR;
-        var tempLeft = left * SCALE_FACTOR;
-        var tempTop = top * SCALE_FACTOR;
-        
-        objects[i].scaleX = tempScaleX;
-        objects[i].scaleY = tempScaleY;
-        objects[i].left = tempLeft;
-        objects[i].top = tempTop;
-        
-        objects[i].setCoords();
-    }
-        
-    g_canvas.renderAll();
-}
-
-// Zoom Out
-function picture_editor_zoomOut() {
-    // TODO limit max cavas zoom out
-    
-    g_canvasScale = g_canvasScale / SCALE_FACTOR;
-    
-    g_canvas.setHeight(g_canvas.getHeight() * (1 / SCALE_FACTOR));
-    g_canvas.setWidth(g_canvas.getWidth() * (1 / SCALE_FACTOR));
-    
-    var objects = g_canvas.getObjects();
-    for (var i in objects) {
-        var scaleX = objects[i].scaleX;
-        var scaleY = objects[i].scaleY;
-        var left = objects[i].left;
-        var top = objects[i].top;
-    
-        var tempScaleX = scaleX * (1 / SCALE_FACTOR);
-        var tempScaleY = scaleY * (1 / SCALE_FACTOR);
-        var tempLeft = left * (1 / SCALE_FACTOR);
-        var tempTop = top * (1 / SCALE_FACTOR);
-
-        objects[i].scaleX = tempScaleX;
-        objects[i].scaleY = tempScaleY;
-        objects[i].left = tempLeft;
-        objects[i].top = tempTop;
-
-        objects[i].setCoords();
-    }
-    
-    g_canvas.renderAll();        
-}
-
-// Reset Zoom
-function picture_editor_resetZoom() {
-    
-    g_canvas.setHeight(g_canvas.getHeight() * (1 / g_canvasScale));
-    g_canvas.setWidth(g_canvas.getWidth() * (1 / g_canvasScale));
-    
-    var objects = g_canvas.getObjects();
-    for (var i in objects) {
-        var scaleX = objects[i].scaleX;
-        var scaleY = objects[i].scaleY;
-        var left = objects[i].left;
-        var top = objects[i].top;
-    
-        var tempScaleX = scaleX * (1 / g_canvasScale);
-        var tempScaleY = scaleY * (1 / g_canvasScale);
-        var tempLeft = left * (1 / g_canvasScale);
-        var tempTop = top * (1 / g_canvasScale);
-
-        objects[i].scaleX = tempScaleX;
-        objects[i].scaleY = tempScaleY;
-        objects[i].left = tempLeft;
-        objects[i].top = tempTop;
-
-        objects[i].setCoords();
-    }
-        
-    g_canvas.renderAll();
-    
-    g_canvasScale = 1;
-}
-*/

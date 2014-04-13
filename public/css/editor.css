@@ -20,3 +20,7 @@ textarea { font-family: monospace; }
 	top:170px;
 	position:absolute;
 }
+
+.button_reedit {
+	background:red;
+}

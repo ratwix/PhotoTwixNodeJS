@@ -7,7 +7,6 @@ var ctrl_press = false;
 
 function initControl() {
 	init_arduino_control();
-	//init_keyboard_control();
 }
 
 function init_arduino_control() {

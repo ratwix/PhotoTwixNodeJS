@@ -78,6 +78,11 @@ app.post('/printPhoto', function(req, res) {
 });
 
 app.get('/getParameters', function(req, res) {
+	var debug = false;
+	if (argv.debug) {
+		debug = true;
+	}
+
 	var param = require('./server_parameter').getAllParameters(debug);
 	
 	res.contentType('text/html');
@@ -106,11 +111,24 @@ app.post('/copyUsb', function(req, res) {
 
 //Get a new template
 app.post('/saveTemplate', function(req, res) {
-	//var template = JSON.parse(req.body.template)
 	var tmp = require('./server_Template').saveTemplate(JSON.parse(req.body.template));
 
 	res.contentType('text/html');
 	res.send('');
+});
+
+app.post('/getTemplates', function(req, res) {
+	var result = require('./server_Template').getTemplates();
+
+	res.contentType('text/html');
+	res.send(result);
+});
+
+app.post('/getTemplateJson', function(req, res) {
+	var result = require('./server_Template').getTemplateJson(JSON.parse(req.body.template));
+	
+	res.contentType('text/html');
+	res.send(result);
 });
 
 eventEmitter.on('startUsbCopy', function () { usb.startCopy(); });

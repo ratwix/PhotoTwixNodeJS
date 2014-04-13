@@ -1,15 +1,33 @@
 function init_photomaton() {
+	initTemplates();
 	initSocket();
 	getParameter();
-	initControl();
 	initCamera();
 	init_copy_socket();
+	initControl();
 	requestAllPhoto();
 }
 
 //Initialise la connexion avec le server node.js avec https
 function initSocket() {
 	g_socket = io.connect(g_server_address, {secure: true});
+}
+
+function initTemplates(callback) {
+	$.post( "getTemplates")
+		.done(function(data) {
+			console.log('Get template OK');
+			$("#templates_edit").html("<div class=\"choose choose_large\">\n" + data);
+			if (typeof(callback) == "function") {
+				callback();
+			}
+		})
+		.fail(function(data) {
+			console.log('Echec de récupération des templates');
+			if (typeof(callback) == "function") {
+				callback();
+			}			
+		});
 }
 
 //Initialise la webcam

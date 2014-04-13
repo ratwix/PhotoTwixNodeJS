@@ -14,7 +14,8 @@ var g_parameters = {
 	template_text3:"",
 	photo_initial_delay:4,
 	photo_delay:3,
-	real_delete:false
+	real_delete:false,
+	debug:false
 };
 
 function loadParameters() {
@@ -47,8 +48,14 @@ function getParameter(name) {
 	return g_parameters[name];
 }
 
-function getAllParameters() {
+function getAllParameters(debug) {
 	loadParameters();
+	if (debug) {
+		g_parameters.debug = true;
+	} else {
+		g_parameters.debug = false;
+	}
+	
 	return JSON.stringify(g_parameters);
 }
 

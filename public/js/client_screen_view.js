@@ -74,7 +74,8 @@ function camera_show() {
 
 function show_parameter() {
 	hideAll();
-	parameterToForm();								//update form with current parameters
+	initTemplates(parameterToForm);								//update form with current parameters
+	
 	$("body").attr('class', 'parameter');
 	$("#parameters")[0].style.display = 'block';
 }

@@ -6,6 +6,11 @@ function getParameter() {
 		g_parameter = JSON.parse(data);
 		parameterToForm();
 		loadTheme();
+		
+		//Init control if in debug mode
+		if (g_parameter.debug) {
+			init_keyboard_control();
+		}
 	});
 }
 
@@ -24,6 +29,7 @@ function resetParameters() {
 	$.post( "resetParameters", {})
 		.done(function(data) {
 			getParameter();
+			$(".button_reedit").removeClass("button_reedit");
 		})
 		.fail(function(data) {
 			console.log('Fail reset parameters');
