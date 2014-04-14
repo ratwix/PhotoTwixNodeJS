@@ -72,9 +72,6 @@ function initCamera() {
 			g_is_streaming = true;
 			
 			//initialisation canvas
-			effect_canvas = $("#effect_canvas")[0];
-			effect_canvas.setAttribute('width', g_basic_video_x);
-			effect_canvas.setAttribute('height', g_basic_video_y);
 			init_canvas_size();
 			init_canvas_effect();
 		  }

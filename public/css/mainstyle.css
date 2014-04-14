@@ -172,7 +172,7 @@ body.parameterblank {
 #effect_div {
 	position: absolute;
 	top:100px;
-	right:100px;
+	right:60px;
 }
 
 #effect_div li {
@@ -182,6 +182,11 @@ body.parameterblank {
 
 #effect_div img {
 	width:150px;
+}
+
+#effect_div ul {
+	-webkit-columns: 2;
+	-moz-columns: 2;
 }
 
 #effect_div .selected {

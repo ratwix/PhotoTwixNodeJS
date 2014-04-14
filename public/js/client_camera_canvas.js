@@ -12,8 +12,10 @@ var g_context_3;
 var g_context_4;
 var g_context_5;
 var g_context_6;
-var g_context_effect;
 var g_context_blank;
+
+var canvas_glfx_effect = fx.canvas();
+var texture_glfx_effect = canvas_glfx_effect.texture($("#basic_video")[0]);
 
 //////////////////////////////////////////
 ////	Canvas management
@@ -45,37 +47,29 @@ function showVideo() {
 
 //Dessiner toute les mignatures si elles sont visibles
 function draw_canvas() {
-	var effect_canvas = $("#effect_canvas")[0];
-
 	if ($("#canvas_photo_1")[0].style.display != "none") {
-		g_context_1.drawImage(effect_canvas, 0, 0);
+		g_context_1.drawImage(canvas_glfx_effect, 0, 0);
 	}
 	
 	if ($("#canvas_photo_2")[0].style.display != "none") {
-		g_context_2.drawImage(effect_canvas, 0, 0);
+		g_context_2.drawImage(canvas_glfx_effect, 0, 0);
 	}
 	
 	if ($("#canvas_photo_3")[0].style.display != "none") {
-		g_context_3.drawImage(effect_canvas, 0, 0);
+		g_context_3.drawImage(canvas_glfx_effect, 0, 0);
 	}
 	
 	if ($("#canvas_photo_4")[0].style.display != "none") {
-		g_context_4.drawImage(effect_canvas, 0, 0);
+		g_context_4.drawImage(canvas_glfx_effect, 0, 0);
 	}
 	
 	if ($("#canvas_photo_5")[0].style.display != "none") {
-		g_context_5.drawImage(effect_canvas, 0, 0);
+		g_context_5.drawImage(canvas_glfx_effect, 0, 0);
 	}
 	
 	if ($("#canvas_photo_6")[0].style.display != "none") {
-		g_context_6.drawImage(effect_canvas, 0, 0);
+		g_context_6.drawImage(canvas_glfx_effect, 0, 0);
 	}
-	/*
-	for (var i = 1; i <= 6; i++) {
-		if ($("#canvas_photo_" + i.toString())[0].style.display != "none")
-			$("#canvas_photo_" + i.toString())[0].getContext('2d').drawImage(effect_canvas, 0, 0);
-	}
-	*/
 }
 
 //////////////////////////////////////////
@@ -89,30 +83,30 @@ function init_canvas_effect() {
 	g_context_4 = $("#canvas_photo_4")[0].getContext('2d');
 	g_context_5 = $("#canvas_photo_5")[0].getContext('2d');
 	g_context_6 = $("#canvas_photo_6")[0].getContext('2d');
-	g_context_effect = $("#effect_canvas")[0].getContext('2d');
 	g_context_blank = $("#blank_canvas")[0].getContext('2d');
 
-	var effect_canvas = $("#effect_canvas")[0];
-	var effect_canvas_context = effect_canvas.getContext('2d');
-	effect_canvas_context.translate(g_basic_video_x, 0);
-    effect_canvas_context.scale(-1, 1);
 	//Add all effects
 	g_effect_filter.push(effect_null);
 	g_effect_filter.push(effect_grey);
 	g_effect_filter.push(effect_sepia);
 	g_effect_filter.push(effect_bright);
+	g_effect_filter.push(effect_gotham);
+	g_effect_filter.push(effect_bulb);
+	g_effect_filter.push(effect_pinch);
+	g_effect_filter.push(effect_swirl);
 }
 
 function draw_canvas_effect() {
 	var basic_video = $("#basic_video")[0];
-	//var effect_canvas = $("#effect_canvas")[0];
-	//var effect_canvas_context = effect_canvas.getContext('2d');
-	var effect_canvas_context = g_context_effect;
-	//var blank_canvas = $("#blank_canvas")[0];
-	//var blank_canvas_context = blank_canvas.getContext('2d');
+
+	//TEST
+	texture_glfx_effect.loadContentsOf(basic_video);
+	canvas_glfx_effect.draw(texture_glfx_effect).ink(0.25).update();
+	//FIN TEST
+	
 	var blank_canvas_context = g_context_blank;
-	effect_canvas_context.drawImage(basic_video, 0, 0, g_basic_video_x, g_basic_video_y);
 	blank_canvas_context.drawImage(basic_video, 0, 0, g_basic_video_x, g_basic_video_y);
+	
 	if (typeof(g_effect_filter[g_current_effect_id]) == "function") {
 		g_effect_filter[g_current_effect_id]();
 	}
@@ -141,25 +135,21 @@ function prev_effect() {
 var effect_null = function() {
 	$("#effect_div img").removeClass("selected");
 	$("#effect_blanc").addClass("selected");
-	return 0;
+	
+	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;	
+	
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).update();
 }
 
 var effect_grey = function() {
 	$("#effect_div img").removeClass("selected");
 	$("#effect_bw").addClass("selected");
 	
-	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
-
-   //var effect_canvas = $("#effect_canvas")[0];
-   //var effect_canvas_context = effect_canvas.getContext('2d');
-   var effect_canvas_context = g_context_effect;
-   
-   var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
-   var data = imageData.data;
-   
-   hueSaturation(data, -1, -1);
-   
-   effect_canvas_context.putImageData(imageData, 0, 0);
+	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;	
+	
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).hueSaturation(0, -1).update();
 }
 
 
@@ -168,18 +158,10 @@ var effect_sepia = function() {
 	$("#effect_div img").removeClass("selected");
 	$("#effect_sepia").addClass("selected");
 	
-   if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
-
-   //var effect_canvas = $("#effect_canvas")[0];
-   //var effect_canvas_context = effect_canvas.getContext('2d');
-   var effect_canvas_context = g_context_effect;
-   
-   var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
-   var data = imageData.data;
-   
-   sepia(data, 1);
-
-   effect_canvas_context.putImageData(imageData, 0, 0);
+	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;	
+	
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).sepia(1).update();
 }
 
 var effect_bright = function() {
@@ -188,70 +170,53 @@ var effect_bright = function() {
 
 	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
-   //var effect_canvas = $("#effect_canvas")[0];
-   //var effect_canvas_context = effect_canvas.getContext('2d');
-   var effect_canvas_context = g_context_effect;
-   
-   var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
-   var data = imageData.data;
-	
-	brightnessContrast(data, 0.20, 0.36);
-	effect_canvas_context.putImageData(imageData, 0, 0);
-	
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).vignette(0.41, 0.32)
+									.curves([ [0.00,0.00] , [0.23,0.19] , [0.47,0.53] , [0.65,0.72] , [1.00,1.00] ] , [ [0.00,0.00] , [0.20,0.23] , [0.46,0.40] , [0.76,0.78] , [1.00,1.00] ] , [ [0.00,0.00] , [0.26,0.16] , [0.54,0.50] , [0.76,0.72] , [1.00,1.00] ])
+									.update();
 }
 
-//Get average chroma key
-function effect_init_chroma_key() {
-	g_current_effect = effect_null;
-	
+var effect_swirl = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_swirl").addClass("selected");
+
 	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
 
-	var effect_canvas = $("#effect_canvas")[0];
-	var effect_canvas_context = effect_canvas.getContext('2d');
-	var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
-	var data = imageData.data;
-	
-	var mr = 0;
-	var mg = 0;
-	var mb = 0;
-	
-	for (var i = 0; i < data.length; i += 4) {	  
-		mr += data[i];
-		mg += data[i + 1];
-		mb += data[i + 2];
-	}
-   
-	g_chroma_key[0] = mr / (data.length / 4);
-	g_chroma_key[1] = mg / (data.length / 4);
-	g_chroma_key[2] = mb / (data.length / 4);
-	alert(g_chroma_key[0] + " " + g_chroma_key[1] + " " + g_chroma_key[2]);
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).swirl(canvas_glfx_effect.width / 2, canvas_glfx_effect.height / 2, canvas_glfx_effect.height / 2, 2.5).update();
 }
 
-var effect_chroma = function chroma_key_effect() {
-	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
-	if (g_chroma_key[0] == 0 && g_chroma_key[1] == 0 && g_chroma_key[2] == 0) return;
+var effect_bulb = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_bulb").addClass("selected");
 
-	var effect_canvas = $("#effect_canvas")[0];
-	var effect_canvas_context = effect_canvas.getContext('2d');
-	var imageData = effect_canvas_context.getImageData(0, 0, g_basic_video_x, g_basic_video_y);
-	var data = imageData.data;
-	
-	//Step 1 : define transparent pixel
-	for (var i = 0; i < data.length; i += 4) {	  
-		if ((data[i] - g_chroma_key_tolerence < g_chroma_key[0]) && 
-			(data[i] + g_chroma_key_tolerence > g_chroma_key[0]) &&
-			(data[i + 1] - g_chroma_key_tolerence < g_chroma_key[1]) && 
-			(data[i + 1] + g_chroma_key_tolerence > g_chroma_key[1]) &&
-			(data[i + 2] - g_chroma_key_tolerence < g_chroma_key[2]) && 
-			(data[i + 2] + g_chroma_key_tolerence > g_chroma_key[2])) {
-				data[i] = 0;
-				data[i] = 255;
-				data[i] = 0;
-		}
-	}
-	
-	//Step 3 : draw front
-	effect_canvas_context.putImageData(imageData, 0, 0);
+	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
+
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).bulgePinch(canvas_glfx_effect.width / 2, canvas_glfx_effect.height / 2, canvas_glfx_effect.height / 2, 0.85).update();
+}
+
+var effect_pinch = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_pinch").addClass("selected");
+
+	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
+
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).bulgePinch(canvas_glfx_effect.width / 2, canvas_glfx_effect.height / 2, canvas_glfx_effect.height / 2, -0.60).update();
+}
+
+var effect_gotham = function() {
+	$("#effect_div img").removeClass("selected");
+	$("#effect_gotham").addClass("selected");
+
+	if (g_basic_video_x <= 0 || g_basic_video_y <= 0) return;
+
+	texture_glfx_effect.loadContentsOf($("#basic_video")[0]);
+	canvas_glfx_effect.draw(texture_glfx_effect).vignette(0.41, 0.32)
+									.unsharpMask(40, 3)
+									.curves([ [0.00,0.00] , [0.06,0.01] , [0.25,0.10] , [0.36,0.16] , [0.50,0.26] , [0.55,0.33] , [0.64,0.45] , [0.75,0.65] , [0.88,0.84] , [0.94,0.92] , [1.00,1.00] ] , [ [0.00,0.00] , [0.06,0.01] , [0.25,0.07] , [0.36,0.15] , [0.50,0.28] , [0.55,0.34] , [0.64,0.47] , [0.75,0.65] , [0.88,0.83] , [0.94,0.91] , [1.00,1.00] ] , [ [0.00,0.00] , [0.06,0.00] , [0.25,0.09] , [0.36,0.19] , [0.50,0.35] , [0.55,0.39] , [0.64,0.49] , [0.75,0.59] , [0.88,0.77] , [0.94,0.89] , [1.00,1.00] ])
+									.hueSaturation(0, -0.9).update();
 }
 
 //////////////////////////////////////////
@@ -316,14 +281,13 @@ function photoCountdown() {
 			showLoading();
 			compileAllPhoto();
 		}
-		
 	}
 }
 
 function takePhoto(current_photo) {
 	$("#camera_flash").show().delay(250).fadeOut(250);
 	g_photo_sound.play();	
-	var png_effect = $("#effect_canvas")[0].toDataURL();
+	var png_effect = canvas_glfx_effect.toDataURL('image/png');
 	var png_blank = $("#blank_canvas")[0].toDataURL();
 	
 	var cur_img = $("#result_photo_" + current_photo.toString())[0];
