@@ -9,6 +9,7 @@
 var fs = require('fs');
 var ctr = require('./server_arduino');
 var usb = require('./server_copyUsb');
+var bodyParser = require('body-parser');
 
 var express = require('express'),
 //http = require('http'),
@@ -29,14 +30,12 @@ var argv = require('optimist').argv;
 //Tout les élements public sont dans le répertoire public.
 //Des que le navigateur va demander du css ou du js, ca ira le chercher dans la partie public
 
-app.configure(function () {
-    app.use(express.static(__dirname + "/public"));
-    app.use(express.bodyParser({
-          keepExtensions: true,
-          limit: 30000000, // 30M limit
-          defer: true              
-    }));
-})
+app.use(express.static(__dirname + "/public"));
+app.use(bodyParser({
+	  keepExtensions: true,
+	  limit: 30000000, // 30M limit
+	  defer: true              
+}));
 
 //Default pages : public/index.html
 app.get('/', function(req, res) {

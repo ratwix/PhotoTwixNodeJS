@@ -17,6 +17,15 @@ User interface : Arduino
 -- Gyp
 -- Johnny-five
 -- winreg
+-- copysync
+-- fs-extra
+-- fs-tools
+-- json
+-- ncp
+-- optimist
+-- path
+-- static
+-- body-parser
 
 *Run*
 
