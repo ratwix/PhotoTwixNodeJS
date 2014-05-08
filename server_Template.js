@@ -66,7 +66,7 @@ var getTemplates = function(socket) {
 							"name=\"___0___\"\n" +
 							"id=\"___0___\"\n" + 
 							"template_css=\"template___2___.css\"\n" +
-							"nb_photos=\"4\"\n" +
+							"nb_photos=\"___4___\"\n" +
 							"img_path=\"./template/template_default/img/___0___.png\"\n" +
 							"img_cut=\"___1___\"\n" +
 							"value=\"true\"\n" +
@@ -89,12 +89,26 @@ var getTemplates = function(socket) {
 			reg = new RegExp('___2___', 'g');
 			tmp = tmp.replace(reg, filename.slice(-1));
 			
+			
 			reg = new RegExp('___1___', 'g');
 			if (filename.slice(-1) == "1" || filename.slice(-1) == "4") {
 				tmp = tmp.replace(reg, "true");
 			} else {
 				tmp = tmp.replace(reg, "false");
 			}
+			
+			reg = new RegExp('___4___', 'g');
+			var nb_take_photo = 4;
+			if (filename.slice(-1) == "3") {
+				nb_take_photo = 1;
+			}
+			if (filename.slice(-1) == "4") {
+				nb_take_photo = 5;
+			}
+			if (filename.slice(-1) == "5") {
+				nb_take_photo = 6;
+			}
+			tmp = tmp.replace(reg, "" + nb_take_photo);
 			
 			//If file already edited, add button_reedit class
 			reg = new RegExp('___3___', 'g');
