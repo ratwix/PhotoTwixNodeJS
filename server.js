@@ -146,6 +146,13 @@ app.post('/deleteAll', function(req, res) {
 	res.send('');
 });
 
+app.post('/uploadAllPhotos', function(req, res) {
+	require('./server_remote_gallery').uploadAllPhotos();
+	
+	res.contentType('text/html');
+	res.send('');	
+});
+
 // Chargement de socket.io pour les échanges avec la partie client
 var io = require('socket.io').listen(server, { log: false }); 
 

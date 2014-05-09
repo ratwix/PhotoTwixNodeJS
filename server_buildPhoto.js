@@ -54,6 +54,14 @@ var buildPhoto = function(photos_json, socket) {
 	//Save image
 	saveImage(canvas.toDataURL(), path_result + "/photo" + d + ".png");
 	
+	//If synchronous upload, upload the immage
+	var p = require('./server_parameter');
+	if (p.getParameter('gallery_autoupload') && (p.getParameter('gallery_name') != "")) {
+		var rg = require('./server_remote_gallery');
+		
+		rg.post_photo("photo" + d + ".png");
+	}
+	
 	//Create thumbnail
 	var thumb = new Canvas(img.width / img.height * 200, 200);
 	thumb.getContext('2d').drawImage(canvas, 0, 0, thumb.width, thumb.height);

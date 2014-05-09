@@ -135,6 +135,32 @@
 						<input type="button" id="parameter_deleteall" value="Tout effacer" onclick="deleteAll()"/><br/>
 					</div>
 				</li>
+				
+				<li>
+					<span class="intyp">
+						Gallerie
+					</span>
+					<div id="parameter_gallery" class="choose">
+						<label for="parameter_gallery_name">Nom</label>
+						<input type="text" id="parameter_gallery_name" name="parameter_gallery_name" maxlength="30" onChange="formToParameter()"/>
+						<br/>
+						<input type="checkbox" name="parameter_gallery_private" value="false" id="parameter_gallery_private" onChange="changePrivateGallery()"/> <label for="parameter_gallery_private">Gallerie privée</label>
+						
+						<br/>
+						<label id="parameter_gallery_password_label" for="parameter_gallery_password">Mot de passe</label>
+						<input type="text" id="parameter_gallery_password" name="parameter_gallery_password" maxlength="30" onChange="formToParameter()"/>
+						<br/>
+						<input type="checkbox" name="parameter_gallery_automatic_upload" value="false" id="parameter_gallery_automatic_upload" onChange="changeAutomaticUploadGallery()"/> <label for="parameter_gallery_automatic_upload">Upload automatique</label>
+						<br/>
+						<input type="button" id="parameter_upload_all" value="Tout uploader" onclick="uploadAllPhotosGallery()"/><br/>
+					</div>
+						
+						
+						
+						
+
+					
+				</li>
 
 				
 				<!------------------------------
@@ -149,8 +175,7 @@
 						<div id="templates_edit">
 							<!-- Auto fill, nothing here -->
 						</div>
-						</div>
-					</div>
+					
 				</li>
 				
 			</ul>

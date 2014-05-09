@@ -136,6 +136,18 @@ ul.formul li select {
 ul.formul li select:focus {
 	outline: none;
 }
+
+ul.formul li label {
+	display:block;
+}
+
+/* Checkboxes and radio buttons */
+ul.formul li div.subform {
+	float: left;
+	width: 400px;
+	
+}
+
 /* Checkboxes and radio buttons */
 ul.formul li div.choose {
 	float: left;

@@ -49,6 +49,11 @@ function parameterToForm() {
 	$('#parameter_current_credit').val(g_parameter.current_credit);
 	$('#parameter_real_delete').attr('checked', g_parameter.real_delete);
 	$('input[name=parameter_price]').filter('[value=' + g_parameter.photo_price + ']').prop('checked', true);
+	$('#parameter_gallery_name').val(g_parameter.gallery_name);
+	$('#parameter_gallery_password').val(g_parameter.gallery_password);
+	$('#parameter_gallery_private').attr('checked', g_parameter.gallery_private);
+	$('#parameter_gallery_automatic_upload').attr('checked', g_parameter.gallery_autoupload);
+	
 	if (g_parameter.templates) {
 		//Les templates
 		for (var i = 0; i < g_parameter.templates.length; i++) {
@@ -68,7 +73,10 @@ function formToParameter() {
 	var current_credit = parseInt($('#parameter_current_credit').val());
 	var price = $('input[name=parameter_price]:checked', '#price').val()
 	var real_delete = $('#parameter_real_delete').is(':checked');
-	
+	var gallery_name = $('#parameter_gallery_name').val();
+	var gallery_private = $('#parameter_gallery_private').is(':checked');
+	var gallery_password = $('#parameter_gallery_password').val();
+	var gallery_autoupload = $('#parameter_gallery_automatic_upload').is(':checked');
 	
 	g_parameter.printer_rx1 = printer_rx1;
 	g_parameter.use_money = (price == 0 ? false : true);
@@ -77,6 +85,11 @@ function formToParameter() {
 	g_parameter.photo_initial_delay = photo_initial_delay;
 	g_parameter.photo_delay = photo_delay;
 	g_parameter.real_delete = real_delete;
+	g_parameter.gallery_name = gallery_name;
+	g_parameter.gallery_private = gallery_private;
+	g_parameter.gallery_password = gallery_password;
+	g_parameter.gallery_autoupload = gallery_autoupload;
+	
 	
 	/* Save templates */
 	var templates = $('.template_item_check');
@@ -156,5 +169,33 @@ function changeText() {
 		})
 		.fail(function(data) {
 			console.log('Fail text change');
+		});
+}
+
+function changePrivateGallery() {
+	var private_gallery = $('#parameter_gallery_private').is(':checked');
+	
+	if (private_gallery) {
+		$('#parameter_gallery_password_label').show();
+		$('#parameter_gallery_password').show();
+	} else {
+		$('#parameter_gallery_password_label').hide();
+		$('#parameter_gallery_password').hide();	
+	}
+	
+	formToParameter();
+}
+
+function changeAutomaticUploadGallery() {
+	formToParameter();
+}
+
+function uploadAllPhotosGallery() {
+	$.post( "uploadAllPhotos")
+		.done(function(data) {
+			console.log('Photos uploaded');
+		})
+		.fail(function(data) {
+			console.log('Fail upload photos');
 		});
 }
