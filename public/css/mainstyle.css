@@ -12,6 +12,8 @@ body.normal {
 	cursor:none;
 	background-image:url(../img/wallpaper1.jpg);
 	background-repeat:repeat;
+	/*background-image:url(../img/orbit-splash-fr.jpg);*/
+	/*background-size:cover;*/
 }
 
 body.parameter {
@@ -191,5 +193,5 @@ body.parameterblank {
 
 #effect_div .selected {
 	border-radius:30px;
-	border: 10px dotted #fe0000;
+	border: 10px dotted #00994C;
 }

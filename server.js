@@ -180,7 +180,7 @@ if (argv.debug) {
 
 	setTimeout(function() {
 		ctr.launchChrome();
-	}, 4000);
+	}, 10000);
 }
 
 

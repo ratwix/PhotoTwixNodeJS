@@ -16,6 +16,8 @@ var photo_pulse 		= 1;			//Define how many photo we can take with 1 pulse
 
 var light;
 
+var light_value = 0;
+
 var g_socket;
 
 var g_isPhoto = true;
@@ -51,21 +53,31 @@ function init() {
 	  //Next button
 	  buttonNext = new five.Button({
 		pin: PIN_BUTTON_NEXT,
-		isPullup: true
+		isPullup: true,
+		holdtime: 3000 
 	  });
 	  
 	  buttonNext.on("down", function(value){
 		sendMessage('buttonNext');
 	  });
 	  
+	  buttonNext.on("hold", function(value){
+		plusLight();
+	  });
+	  
 	  //Prev button
 	  buttonPrev = new five.Button({
 		pin: PIN_BUTTON_PREV,
-		isPullup: true
+		isPullup: true,
+		holdtime: 3000 
 	  });
 	  
 	  buttonPrev.on("down", function(value){
 		sendMessage('buttonPrev');
+	  });
+	  
+	  buttonPrev.on("hold", function(value){
+		minLight();
 	  });
 	  
 	  //Template button	 
@@ -262,9 +274,36 @@ function sendMessage(button) {
 }
 
 function changeLight(value) {
+	light_value = value;
 	if (value > 0) {
 		light.on();
 		light.brightness(value);
+	} else {
+		light.off();
+	}
+}
+
+function plusLight() {
+	light_value += 15;
+	if (light_value > 150) {
+		light_value = 150;
+	}
+	
+	if (light_value > 0) {
+		light.on();
+		light.brightness(light_value);
+	}
+}
+
+function minLight() {
+	light_value -= 15;
+	if (light_value < 0) {
+		light_value = 0;
+	}
+	
+	if (light_value > 0) {
+		light.on();
+		light.brightness(light_value);
 	} else {
 		light.off();
 	}

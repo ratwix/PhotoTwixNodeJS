@@ -108,6 +108,15 @@ var getTemplates = function(socket) {
 			if (filename.slice(-1) == "5") {
 				nb_take_photo = 6;
 			}
+			if (filename.slice(-1) == "6") {
+				nb_take_photo = 3;
+			}
+			if (filename.slice(-1) == "7") {
+				nb_take_photo = 3;
+			}
+			if (filename.slice(-1) == "8") {
+				nb_take_photo = 4;
+			}
 			tmp = tmp.replace(reg, "" + nb_take_photo);
 			
 			//If file already edited, add button_reedit class
