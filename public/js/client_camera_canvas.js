@@ -250,6 +250,7 @@ function prev_photo_theme() {
 
 function startPhotoProcess() {
 	g_photo_in_progress = true;
+	updateLightMinOn();
 	startSinglePhotoProcess(g_parameter.photo_initial_delay);
 	g_current_photo = 1;
 	showVideo();
@@ -280,6 +281,7 @@ function photoCountdown() {
 		} else {
 			showLoading();
 			compileAllPhoto();
+			updateLightMinOff();
 		}
 	}
 }

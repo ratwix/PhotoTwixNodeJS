@@ -126,6 +126,20 @@ function updateLight() {
 	g_socket.emit('socket_led', light);
 }
 
+function updateLightMinOn() {
+	var light = $('#parameter_light').val();
+	
+	if (light < 22) {
+		g_socket.emit('socket_led', 22);
+	}
+}
+
+function updateLightMinOff() {
+	var light = $('#parameter_light').val();
+
+	g_socket.emit('socket_led', light);
+}
+
 function plusLight() {
 	var light = $('#parameter_light').val();
 	light = parseInt(light) + 1;
