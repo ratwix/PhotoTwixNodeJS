@@ -60,7 +60,7 @@ var getTemplates = function(socket) {
 	var result = "";
 
 	var tmp_html = "<div class=\"template_item\">\n" +
-					"<img class=\"template_item_img\" src=\"./template/template_default/img/thumb/___0____high.jpg\"></img>\n" +
+					"<img class=\"template_item_img\" src=\"./template/template_default/img/thumb/___0___.png\"></img>\n" +
 						"<br/>\n" +
 						"<input class=\"template_item_check\" type=\"checkbox\"\n" +
 							"name=\"___0___\"\n" +
@@ -79,9 +79,40 @@ var getTemplates = function(socket) {
 	var files = fs.readdirSync(base_path);
 	for (var i = 0; i < files.length; i++) {
 		if (path.extname(files[i]) == ".png") {
+			
+			
 			var tmp = tmp_html;
 			
 			var filename = path.basename(files[i], path.extname(files[i]));
+			
+			//TODO : Verifier que le thumbnail existe et le créer
+			try {
+				fs.lstatSync("./public/template/template_default/img/thumb/" + filename + ".png");
+			} catch (e) {
+				console.log("Thumb not exist %s", filename);
+				
+				var sourcepath = __dirname + "/public/template/template_default/img/" + filename + ".png";
+				var destpath = __dirname + "/public/template/template_default/img/thumb/" + filename + ".png";
+				
+				var exec = require('child_process').exec,
+				child;
+				var cmd = '"' + __dirname + '/bin/ImageMagick/convert.exe"' + " -resize 20% \"" + sourcepath + "\" \"" + destpath + "\"";
+				
+				if (require('os').platform() == 'win32') {
+					cmd = cmd.replace(/\//g, "\\"); //comment if linux system
+				}
+				
+				console.log("CMD THUMB: " + cmd);
+				child = exec(cmd,
+				  function (error, stdout, stderr) {
+					//console.log('stdout: ' + stdout);
+					//console.log('stderr: ' + stderr);
+					if (error !== null) {
+					 console.log('exec error: ' + error);
+					}
+				});
+			}
+			
 			
 			var reg = new RegExp('___0___', 'g');
 			tmp = tmp.replace(reg, filename);
